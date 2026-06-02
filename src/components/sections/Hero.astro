@@ -1,0 +1,160 @@
+---
+import Button from '../Button.astro';
+import { useTranslations } from '../../i18n/ui';
+
+interface Props {
+  lang?: 'ru' | 'ua';
+}
+const { lang = 'ua' } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="relative min-h-screen flex items-center pt-32 pb-20 px-6 z-10">
+  <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    
+    <!-- Text Content (Left Side) -->
+    <div class="text-center lg:text-left animate-fade-in-up flex flex-col items-center lg:items-start">
+      <div class="mb-4 inline-flex items-center justify-center px-4 py-2 rounded-full glass-panel text-sm font-semibold text-[var(--color-text-main)] shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-[var(--color-accent-primary)] animate-pulse mr-2"></span>
+        {t('hero.badge')}
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tighter" style="font-family: var(--font-heading)">
+        {t('hero.title1')} <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent-primary)] to-[#00d2ff]">
+          {t('hero.title2')}
+        </span>
+      </h1>
+      
+      <ul class="text-base md:text-lg text-[var(--color-text-muted)] mb-10 space-y-4 max-w-xl text-left inline-block">
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          {t('hero.f1')}
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          {t('hero.f2')}
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          {t('hero.f3')}
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          {t('hero.f4')}
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          {t('hero.f5')}
+        </li>
+        <li class="flex items-start font-bold text-[var(--color-text-main)] mt-4">
+          <img src="/images/podarok.png" alt="Подарок" width="24" height="24" class="w-6 h-6 mr-3 flex-shrink-0" />
+          {t('hero.f6')}
+        </li>
+      </ul>
+
+      <!-- Animated Red Mr.Prussakoff Badge -->
+      <div class="mb-10 inline-block relative group">
+        <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-400 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+        <div class="relative px-8 py-4 bg-red-600 rounded-lg leading-none flex items-center hover-spring shadow-2xl">
+          <span class="flex items-center space-x-2 text-white font-bold text-2xl tracking-widest uppercase" style="font-family: var(--font-heading)">
+            <svg class="w-8 h-8 text-white mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            Mr.Prussakoff
+          </span>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Right Side (Discount Timer) -->
+    <div class="flex justify-center items-center relative animate-fade-in-up" style="animation-delay: 0.3s">
+      <div class="glass-panel p-8 md:p-10 rounded-[40px] text-center border border-[rgba(255,255,255,0.4)] shadow-2xl relative z-10 w-full max-w-lg">
+        
+        <div class="inline-block px-4 py-1 rounded-full bg-[rgba(239,68,68,0.1)] text-red-500 text-sm font-bold uppercase tracking-wider mb-6 border border-[rgba(239,68,68,0.3)]">
+          {t('hero.discount.badge')}
+        </div>
+
+        <h2 class="text-4xl md:text-5xl font-black text-red-500 mb-2 drop-shadow-sm" style="font-family: var(--font-heading)">
+          {t('hero.discount.title')}
+        </h2>
+
+        <p class="text-[var(--color-text-muted)] mb-8 text-sm leading-relaxed">
+          {t('hero.discount.text')} <span id="current-day-label" class="font-bold text-[var(--color-text-main)]"></span>.
+        </p>
+
+        <!-- Timer -->
+        <div class="flex justify-center gap-3 md:gap-4 mb-8">
+          <div class="flex flex-col items-center">
+            <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
+              <span id="timer-days">00</span>
+            </div>
+            <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">{t('hero.timer.d')}</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
+              <span id="timer-hours">23</span>
+            </div>
+            <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">{t('hero.timer.h')}</span>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
+              <span id="timer-minutes">59</span>
+            </div>
+            <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">{t('hero.timer.m')}</span>
+          </div>
+          <div class="flex flex-col items-center relative">
+            <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-red-500 border border-red-200 shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-pulse">
+              <span id="timer-seconds">53</span>
+            </div>
+            <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-red-500">{t('hero.timer.s')}</span>
+          </div>
+        </div>
+
+        <Button text={t('hero.btn.discount')} href="#consultation-form" variant="primary" class="w-full text-lg py-5 shadow-[0_10px_20px_rgba(59,130,246,0.3)]" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  function initTimer() {
+    const label = document.getElementById('current-day-label');
+    if (label) {
+      const now = new Date();
+      const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+      // @ts-ignore
+      const isUa = document.documentElement.lang === 'ua' || window.location.pathname.includes('-ua') || !window.location.pathname.includes('/ru/');
+      label.textContent = now.toLocaleDateString(isUa ? 'uk-UA' : 'ru-RU', options);
+    }
+
+    const endTime = new Date();
+    endTime.setHours(23, 59, 59, 999);
+
+    const dEl = document.getElementById('timer-days');
+    const hEl = document.getElementById('timer-hours');
+    const mEl = document.getElementById('timer-minutes');
+    const sEl = document.getElementById('timer-seconds');
+
+    function update() {
+      const now = new Date();
+      const diff = endTime.getTime() - now.getTime();
+
+      if (diff <= 0) return;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      if (dEl) dEl.textContent = days.toString().padStart(2, '0');
+      if (hEl) hEl.textContent = hours.toString().padStart(2, '0');
+      if (mEl) mEl.textContent = minutes.toString().padStart(2, '0');
+      if (sEl) sEl.textContent = seconds.toString().padStart(2, '0');
+    }
+
+    update();
+    if(window.heroTimerInterval) clearInterval(window.heroTimerInterval);
+    window.heroTimerInterval = setInterval(update, 1000);
+  }
+
+  document.addEventListener('astro:page-load', initTimer);
+</script>

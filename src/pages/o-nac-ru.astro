@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ConsultationForm from '../components/sections/ConsultationForm.astro';
+import ParticleBackground from '../components/ParticleBackground.astro';
+
+const lang = 'ru';
+---
+
+<Layout title="О нас - PRUSSAKOFF" lang={lang}>
+  <ParticleBackground />
+  <Header lang={lang} />
+  
+  <main class="pt-32 pb-16 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-sm text-[var(--color-text-muted)] mb-8 font-medium">
+        <ol class="flex items-center space-x-2">
+          <li>
+            <a href="/ru" class="hover:text-[var(--color-accent-primary)] transition-colors">Главная</a>
+          </li>
+          <li>
+            <span class="mx-2">/</span>
+          </li>
+          <li class="text-[var(--color-text-main)]">
+            О нас
+          </li>
+        </ol>
+      </nav>
+
+      <div class="glass-panel p-8 md:p-12 rounded-3xl shadow-xl">
+        <h1 class="text-4xl md:text-5xl font-black mb-8 text-[var(--color-text-main)] tracking-tight leading-tight">
+          О <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent-primary)] to-[#5c4cdb]">нас</span>
+        </h1>
+        
+        <div class="prose prose-lg prose-headings:font-bold prose-headings:text-[var(--color-text-main)] prose-p:text-[var(--color-text-muted)] max-w-none">
+          <p class="text-xl font-medium text-[var(--color-text-main)] mb-8">
+            <strong>СПК Prussakoff</strong> – это беззаботное пребывание на своей территории без насекомых и грызунов!
+          </p>
+
+          <p class="mb-6">
+            С 2015 СПК Prussakoff специализируется на профессиональной ликвидации насекомых и грызунов. Мы работаем по самым современным методам борьбы с вредителями. Мы используем только гипоаллергенные, сертифицированные препараты безопасные для детей и животных, с лучшим соотношением цена-качество на рынке уже более 9 лет.
+          </p>
+
+          <h2 class="text-2xl mt-12 mb-6">По каким направлениям мы работаем:</h2>
+          <ul class="space-y-4 mb-8">
+            <li> <span><strong>Борьба с вредителями</strong> — уничтожаем тараканов, клопов, блох и более 15 различных насекомых.</span>
+            </li>
+            <li> <span><strong>Дератизация</strong> – устранение присутствия грызунов, таких как крысы и мыши.</span>
+            </li>
+            <li> <span><strong>Фумигация</strong> – профессионально дезинфицируем зерно и зернохранилища.</span>
+            </li>
+            <li> <span><strong>Дезинфекция</strong> — уничтожаем вирусы и микробы, так же устраняем плесень и грибок.</span>
+            </li>
+            <li> <span><strong>Дезодорация</strong> – мы устраняем посторонние запахи в помещениях и автомобилях.</span>
+            </li>
+          </ul>
+
+          <p class="mb-6">
+            Наши профессиональные меры не только помогут безопасно устранить поставленную заказчиком проблему, но и предложат профилактические рекомендации по поддержанию долгосрочной борьбы с вредителями.
+          </p>
+          <p class="mb-8">
+            Специалисты Prussakoff ежегодно проходят обучение по работе с инсектицидами, гербицидами и пестицидами. И постоянно совершенствуют свои знания и навыки для максимального уровня компетенции перед заказчиком.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-12 mt-12 mb-12">
+            <div>
+              <h2 class="text-2xl mb-6">Мы обслуживаем следующие объекты:</h2>
+              <ul class="space-y-3">
+                <li> квартиры и частные дома;
+                </li>
+                <li> предприятия пищевой промышленности;
+                </li>
+                <li> склады;
+                </li>
+                <li> подвалы;
+                </li>
+                <li> полный спектр гостиничного бизнеса;
+                </li>
+                <li> школы, медицинские учреждения, другие учебные заведения;
+                </li>
+                <li> многоэтажные здания и подъезды;
+                </li>
+                <li> иные объекты предпринимательской деятельности;
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-2xl mb-6">Мы гарантируем клиентам:</h2>
+              <ol class="space-y-4 list-decimal list-inside marker:text-[var(--color-accent-primary)] marker:font-bold">
+                <li>Анонимность на объекте по желанию заказчика;</li>
+                <li>Качественное, гарантированное предоставление услуг, согласно запросу заказчика;</li>
+                <li>Проведение бесплатного аудита нашим сотрудником, по запросу;</li>
+                <li>Круглосуточный сервис и профессиональную консультацию нашего сотрудника;</li>
+                <li>Полное сопровождение заказчика на всех этапах сотрудничества;</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="bg-[rgba(115,96,242,0.05)] border border-[var(--color-accent-primary)]/20 p-6 md:p-8 rounded-2xl mb-12 relative overflow-hidden">
+            <div class="absolute -right-6 -top-6 text-[var(--color-accent-primary)]/10">
+              <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            </div>
+            <h2 class="text-2xl mb-4 relative z-10">Наши клиенты рекомендуют нас, и вот почему:</h2>
+            <p class="italic text-lg relative z-10">
+              «Несмотря на высокий уровень консультационного взаимодействия с клиентом, я получил не менее высокий уровень качества самой обработки». 
+            </p>
+            <p class="mt-4 relative z-10">
+              — Потому что для нас не существует «мелочей», на которые можно закрыть глаза. Профессионализм компании в первую очередь заключается во внимании к тем самым «мелочам». И мы делаем все возможное для того, чтобы наши клиенты получали положительный опыт на всех уровнях взаимодействия с нашей компанией!
+            </p>
+          </div>
+
+          <h2 class="text-2xl mt-12 mb-6">Наша загруженность и имеющееся оборудование компании</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4 mb-8">
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">45</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">штатных<br>сотрудников</div>
+            </div>
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">34</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">профессиональных<br>дезинсектора</div>
+            </div>
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">24/7</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">график<br>работы</div>
+            </div>
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">130-240</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">звонков<br>ежедневно</div>
+            </div>
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">4-8</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">заказов/день<br>на человека</div>
+            </div>
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">30</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">генераторов<br>тумана</div>
+            </div>
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">4</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">генератора<br>тумана</div>
+            </div>
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">20</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">ручных<br>помп</div>
+            </div>
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">2</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">мотоопрыскивателя</div>
+            </div>
+            <div class="bg-white/50 border border-white p-4 rounded-2xl text-center shadow-sm flex flex-col justify-center">
+              <div class="text-2xl md:text-3xl font-black text-[var(--color-accent-primary)] mb-1">15</div>
+              <div class="text-[10px] md:text-xs font-medium leading-tight break-words">служебных<br>автомобилей</div>
+            </div>
+          </div>
+
+          <h2 class="text-2xl mt-12 mb-6">Мы используем только современное, профессиональное оборудование:</h2>
+          <p class="italic text-lg mb-6">
+            Все оборудование в нашем арсенале всегда своевременно обслуживается и правильно хранится! Ради получения максимальной производительности при эксплуатации, которые закладываются производителем при изготовлении данного оборудования!
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li> <span><strong>Генератор холодного тумана</strong> с мощным двигателем от Samsung — VectorFog C150 и VectorFog C150 Plus.</span>
+            </li>
+            <li> <span><strong>Опрыскиватель</strong> SR 430 STIHL 4244 011 2600.</span>
+            </li>
+            <li> <span><strong>Озонатор воздуха</strong> промышленный «Озон-20».</span>
+            </li>
+            <li> <span><strong>Генератор аэрозоля</strong> горячего тумана Longray TS-35A Euro.</span>
+            </li>
+          </ul>
+
+          <h2 class="text-2xl mt-12 mb-6">Мы используем иновационно-практичный подход к работе, поэтому в нашем арсенале есть следующие методы обработки:</h2>
+          <ul class="space-y-4 mb-8">
+            <li> <span>Обработка инсектицидами;</span>
+            </li>
+            <li> <span>Термообработка;</span>
+            </li>
+            <li> <span>Пылевые и гелевые приманки;</span>
+            </li>
+            <li> <span>Барьерные методы;</span>
+            </li>
+            <li> <span>Полный арсенал методов;</span>
+            </li>
+          </ul>
+
+          <div class="bg-white/50 border border-[var(--color-accent-primary)]/20 p-6 md:p-8 rounded-2xl mb-8 relative overflow-hidden">
+            <p class="font-bold text-xl text-[var(--color-text-main)] relative z-10 leading-relaxed">
+              Благодаря многолетнему опыту и совершенствованию навыков в области санитарии, мы научились правильно подбирать методы и препараты для обработок у заказчиков! Все это делается ради 100% положительного результата для наших клиентов, которые доверяют и выбирают наши услуги уже более 9 лет!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <ConsultationForm lang={lang} />
+  <Footer lang={lang} />
+</Layout>

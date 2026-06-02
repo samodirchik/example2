@@ -1,0 +1,27 @@
+---
+import { testimonialsData } from '../../i18n/data_extended';
+
+interface Props {
+  lang?: 'ru' | 'ua';
+}
+const { lang = 'ua' } = Astro.props;
+const data = testimonialsData[lang];
+---
+<section class="relative py-24 px-6 z-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 animate-fade-in-up">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-[var(--color-text-main)]" style="font-family: var(--font-heading)">
+        {data.title}
+      </h2>
+      <div class="w-24 h-1 bg-[var(--color-accent-primary)] mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[1, 2, 3, 4].map((num) => (
+        <div class="glass-panel p-2 rounded-3xl hover-spring">
+          <img src={`/images/feedback-${num}.jpg`} alt={`Review ${num}`} width="600" height="800" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+---
+import { faqData } from '../../i18n/faqData';
+
+interface Props {
+  lang?: 'ru' | 'ua';
+}
+const { lang = 'ua' } = Astro.props;
+const data = faqData[lang];
+---
+<section class="relative py-24 px-6 z-10 bg-gradient-to-b from-transparent to-white/5">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16 animate-fade-in-up">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-[var(--color-text-main)]" style="font-family: var(--font-heading)">
+        {data.title}
+      </h2>
+      <div class="w-24 h-1 bg-[var(--color-accent-primary)] mx-auto rounded-full"></div>
+    </div>
+
+    <div class="space-y-4">
+      {data.items.map((item, index) => (
+        <div class="glass-panel rounded-2xl overflow-hidden faq-item group animate-fade-in-up" style={`animation-delay: ${index * 0.1}s`}>
+          <button class="w-full text-left px-8 py-6 flex justify-between items-center focus:outline-none transition-colors hover:bg-white/5">
+            <span class="text-lg font-bold text-[var(--color-text-main)] group-[.is-open]:text-[var(--color-accent-primary)] transition-colors pr-8">
+              {item.q}
+            </span>
+            <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 group-[.is-open]:bg-[var(--color-accent-primary)] group-[.is-open]:text-white transition-all duration-300 transform group-[.is-open]:rotate-180">
+              <svg class="w-5 h-5 text-[var(--color-accent-primary)] group-[.is-open]:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" class="group-[.is-open]:hidden"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" class="hidden group-[.is-open]:block"></path>
+              </svg>
+            </div>
+          </button>
+          
+          <div class="grid grid-rows-[0fr] group-[.is-open]:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[var(--ease-spring)]">
+            <div class="overflow-hidden min-h-0">
+              <div class="px-8 pb-6 text-gray-800 leading-relaxed font-medium" set:html={item.a}>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', function() {
+    const faqButtons = document.querySelectorAll('.faq-item button');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const item = this.closest('.faq-item');
+        if (!item) return;
+
+        const isOpen = item.classList.contains('is-open');
+        const allItems = document.querySelectorAll('.faq-item');
+        
+        // Close all
+        allItems.forEach(faq => {
+          faq.classList.remove('is-open');
+        });
+
+        // Open clicked if it wasn't open
+        if (!isOpen) {
+          item.classList.add('is-open');
+        }
+      });
+    });
+  });
+</script>

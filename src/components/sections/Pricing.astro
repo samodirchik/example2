@@ -1,0 +1,63 @@
+---
+import Button from '../Button.astro';
+import { pricingData } from '../../i18n/data';
+
+interface Props {
+  lang?: 'ru' | 'ua';
+}
+const { lang = 'ua' } = Astro.props;
+const data = pricingData[lang];
+---
+<section class="relative py-24 px-6 z-10 overflow-hidden">
+  <style>
+    @keyframes strike-through {
+      0% { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+    .strike-anim {
+      position: relative;
+      display: inline-block;
+    }
+    .strike-anim::after {
+      content: '';
+      position: absolute;
+      left: -5%;
+      top: 50%;
+      width: 110%;
+      height: 2px;
+      background-color: #ef4444;
+      transform-origin: left center;
+      animation: strike-through 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation-delay: 0.3s;
+      transform: scaleX(0);
+      box-shadow: 0 0 8px rgba(239,68,68,0.5);
+    }
+  </style>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-16 animate-fade-in-up">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-[var(--color-text-main)]" style="font-family: var(--font-heading)">
+        {data.title}
+      </h2>
+      <div class="w-24 h-1 bg-[var(--color-accent-primary)] mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      {data.items.map((item, index) => (
+        <div class="glass-panel p-8 rounded-3xl hover-spring flex flex-col items-center justify-between group relative overflow-hidden animate-fade-in-up" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10 w-full text-center">
+            <h3 class="text-2xl font-bold mb-8 text-[var(--color-text-main)]" style="font-family: var(--font-heading)">{item.title}</h3>
+            <div class="flex flex-col items-center gap-2 mb-8">
+              <span class="text-xl text-[var(--color-text-muted)] font-medium strike-anim">{item.oldPrice}</span>
+              <span class="text-4xl font-black text-[var(--color-accent-primary)] drop-shadow-md">{item.newPrice} <span class="text-xl">{item.currency}</span></span>
+            </div>
+            <Button text={data.btn} href="#consultation-form" variant="primary" class="w-full py-4 text-sm shadow-md" />
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>

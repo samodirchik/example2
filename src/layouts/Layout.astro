@@ -1,0 +1,150 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  lang?: 'ru' | 'ua';
+}
+
+const { title, lang = 'ua' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang === "ua" ? "uk" : lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <ClientRouter />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content="Профессиональное уничтожение насекомых и грызунов. Гарантия качества и безопасности." />
+
+    <!-- Google Fonts: Inter (Async) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    </noscript>
+    
+    <!-- Fontshare: Clash Display (Async) -->
+    <link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap">
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap">
+    </noscript>
+
+    <!-- Lazy Load GTM & Analytics -->
+    <script is:inline>
+      (function() {
+        var gtmLoaded = false;
+        function loadGTM() {
+          if (gtmLoaded) return;
+          gtmLoaded = true;
+
+          // Google Tag Manager
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-WFTL8DX');
+
+          // Google Analytics (UA)
+          var gtagScript = document.createElement('script');
+          gtagScript.async = true;
+          gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=UA-179991897-1';
+          document.head.appendChild(gtagScript);
+
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-179991897-1');
+
+          // Remove listeners
+          var events = ['scroll', 'mousemove', 'mousedown', 'touchstart', 'keydown'];
+          events.forEach(function(e) { window.removeEventListener(e, loadGTM); });
+        }
+
+        var events = ['scroll', 'mousemove', 'mousedown', 'touchstart', 'keydown'];
+        events.forEach(function(e) {
+          window.addEventListener(e, loadGTM, { passive: true, once: true });
+        });
+
+        // Fallback: load after 4 seconds even if no interaction
+        setTimeout(loadGTM, 4000);
+      })();
+    </script>
+    
+    <!-- Binotel Widget -->
+    <script type="text/javascript" is:inline>
+      // 1. Загружаем скрипт только один раз при первом запуске
+      setTimeout(function() {
+        (function(d, w, s) {
+          var widgetHash = 'e6nhzbywr4ic56h8togt', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+          gcw.src = '//widgets.binotel.com/getcall/widgets/'+ widgetHash +'.js';
+          var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+        })(document, window, 'script');
+        
+        (function(d, w, s) {
+          var widgetHash = 'hwsv4SKxp6v5HnJxDEPV', bch = d.createElement(s); bch.type = 'text/javascript'; bch.async = true;
+          bch.src = '//widgets.binotel.com/chat/widgets/' + widgetHash + '.js';
+          var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(bch, sn);
+        })(document, window, 'script');
+
+        (function(d, w, s) {
+          var widgetHash = 'oorqt09dd1febh7t8isi', ctw = d.createElement(s); ctw.type = 'text/javascript'; ctw.async = true;
+          ctw.src = '//widgets.binotel.com/calltracking/widgets/'+ widgetHash +'.js';
+          var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(ctw, sn);
+        })(document, window, 'script');
+      }, 3500);
+
+      // Binotel widget is loaded once. View Transitions might remove it on navigation.
+      // We removed the SPA hacks because they were breaking the page layout.
+    </script>
+  </head>
+  <body class="bg-[var(--color-bg-base)] text-[var(--color-text-main)] min-h-screen relative overflow-x-hidden selection:bg-[var(--color-accent-primary)] selection:text-white">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFTL8DX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <slot />
+    
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      document.addEventListener("astro:page-load", () => {
+        if (!window.location.hash) {
+          window.scrollTo(0, 0);
+        }
+      });
+
+      // Scroll animations for prose content
+      document.addEventListener('astro:page-load', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // Find all elements to animate
+        const elements = document.querySelectorAll('.prose p, .prose h2, .prose h3, .prose ul, .prose blockquote, .prose figure');
+        elements.forEach((el, index) => {
+          el.classList.add('animate-on-scroll');
+          // Stagger the animations slightly based on DOM order
+          el.style.transitionDelay = `${(index % 3) * 100}ms`;
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

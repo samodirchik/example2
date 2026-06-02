@@ -1,0 +1,32 @@
+---
+interface Props {
+  text: string;
+  href?: string;
+  variant?: 'primary' | 'secondary';
+  class?: string;
+}
+
+const { text, href, variant = 'primary', class: className = '' } = Astro.props;
+
+const baseStyles = "inline-flex items-center justify-center px-8 py-4 text-sm tracking-wider uppercase font-semibold rounded-full hover-spring cursor-pointer relative overflow-hidden group shadow-lg";
+const primaryStyles = "bg-[var(--color-accent-primary)] text-white hover:bg-[var(--color-accent-light)] border border-transparent glass-glow";
+const secondaryStyles = "bg-transparent text-[var(--color-text-main)] hover:bg-[var(--color-bg-subtle)] glass-panel";
+
+const combinedStyles = `${baseStyles} ${variant === 'primary' ? primaryStyles : secondaryStyles} ${className}`;
+---
+
+{href ? (
+  <a href={href} class={combinedStyles}>
+    <span class="relative z-10">{text}</span>
+    {variant === 'primary' && (
+      <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-accent-dark)] to-[var(--color-accent-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    )}
+  </a>
+) : (
+  <button class={combinedStyles}>
+    <span class="relative z-10">{text}</span>
+    {variant === 'primary' && (
+      <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-accent-dark)] to-[var(--color-accent-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    )}
+  </button>
+)}

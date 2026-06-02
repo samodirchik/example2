@@ -1,0 +1,241 @@
+---
+// ParticleBackground.astro
+---
+<div id="particle-container" class="absolute inset-0 z-0 overflow-hidden bg-[var(--color-bg-base)] pointer-events-none">
+  <!-- Градиент поверх жуков -->
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-bg-base)] pointer-events-none z-10"></div>
+</div>
+<script>
+  // РЕШЕНИЕ ПРОБЛЕМЫ ПРЕРЫВИСТОСТИ И ЛАГОВ:
+  // Мы полностью отказываемся от Canvas. Canvas на мобильных телефонах 
+  // часто округляет координаты до целых пикселей, что при очень медленном движении 
+  // (сантиметр за 10 секунд) выглядит как подергивание стрелки часов.
+  // Заменяем Canvas на DOM-элементы (векторные SVG) с CSS-трансформациями.
+  // CSS translate3d обрабатывается видеокартой (GPU) телефона с идеальным 
+  // саб-пиксельным сглаживанием. Это дает абсолютную плавность при любых скоростях.
+
+  class CyberRoachDOM {
+    el: HTMLDivElement;
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    speed: number;
+    targetVx: number;
+    targetVy: number;
+    isStopped: boolean;
+    stateTimer: number;
+
+    constructor(x: number, y: number, container: HTMLElement) {
+      this.x = x;
+      this.y = y;
+      
+      this.speed = Math.random() * 0.5 + 0.2; 
+      const angle = Math.random() * Math.PI * 2;
+      this.targetVx = Math.cos(angle) * this.speed;
+      this.targetVy = Math.sin(angle) * this.speed;
+      this.vx = this.targetVx;
+      this.vy = this.targetVy;
+      
+      this.isStopped = false;
+      this.stateTimer = Math.random() * 200;
+
+      const colors = [
+        'rgba(139, 69, 19, 1)',   
+        'rgba(160, 82, 45, 1)',   
+        'rgba(101, 67, 33, 1)'    
+      ];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      this.el = document.createElement('div');
+      this.el.style.position = 'absolute';
+      this.el.style.left = '-10px';
+      this.el.style.top = '-10px';
+      this.el.style.width = '20px';
+      this.el.style.height = '20px';
+      this.el.style.color = color;
+      // will-change указывает браузеру использовать аппаратное ускорение
+      this.el.style.willChange = 'transform';
+      
+      const scale = Math.random() * 0.4 + 0.8;
+      
+      // Векторный SVG "Примера 3"
+      this.el.innerHTML = `
+        <svg width="20" height="20" viewBox="-10 -10 20 20" style="display:block; transform: scale(${scale});">
+          <g stroke="currentColor" fill="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <ellipse cx="0" cy="0" rx="5" ry="2.5" />
+            <line x1="4" y1="-0.75" x2="10" y2="-3.75" />
+            <line x1="4" y1="0.75" x2="10" y2="3.75" />
+            <line x1="-2" y1="-2" x2="-4.8" y2="-6.25" />
+            <line x1="-2" y1="2" x2="-4.8" y2="6.25" />
+            <line x1="0" y1="-2" x2="-0.8" y2="-6.25" />
+            <line x1="0" y1="2" x2="-0.8" y2="6.25" />
+            <line x1="2" y1="-2" x2="3.2" y2="-6.25" />
+            <line x1="2" y1="2" x2="3.2" y2="6.25" />
+          </g>
+        </svg>
+      `;
+      container.appendChild(this.el);
+    }
+
+    update(mouse: {x: number, y: number, radius: number}, width: number, height: number, dt: number) {
+      const margin = 50;
+      if (this.x > width + margin) this.x = -margin;
+      if (this.x < -margin) this.x = width + margin;
+      if (this.y > height + margin) this.y = -margin;
+      if (this.y < -margin) this.y = height + margin;
+
+      let dx = this.x - mouse.x;
+      let dy = this.y - mouse.y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+      
+      let isEscaping = false;
+
+      if (distance < mouse.radius) {
+        isEscaping = true;
+        this.isStopped = false;
+        
+        let force = Math.max(0.2, (mouse.radius - distance) / mouse.radius);
+        let scatterSpeed = 10 * force; 
+        
+        this.targetVx = (dx / distance) * scatterSpeed;
+        this.targetVy = (dy / distance) * scatterSpeed;
+      } else {
+        this.stateTimer -= dt;
+        
+        if (this.stateTimer <= 0) {
+          if (this.isStopped) {
+            this.isStopped = false;
+            const angle = Math.random() * Math.PI * 2;
+            this.targetVx = Math.cos(angle) * this.speed;
+            this.targetVy = Math.sin(angle) * this.speed;
+            this.stateTimer = Math.random() * 200 + 100;
+          } else {
+            if (Math.random() < 0.25) {
+              this.isStopped = true;
+              this.targetVx = 0;
+              this.targetVy = 0;
+              this.stateTimer = Math.random() * 100 + 50;
+            } else {
+              const angle = Math.atan2(this.targetVy, this.targetVx) + (Math.random() - 0.5);
+              this.targetVx = Math.cos(angle) * this.speed;
+              this.targetVy = Math.sin(angle) * this.speed;
+              this.stateTimer = Math.random() * 200 + 100;
+            }
+          }
+        }
+      }
+
+      let accel = isEscaping ? 0.4 : 0.05;
+      this.vx += (this.targetVx - this.vx) * accel * dt;
+      this.vy += (this.targetVy - this.vy) * accel * dt;
+
+      this.x += this.vx * dt;
+      this.y += this.vy * dt;
+
+      // GPU-ускоренная трансформация. Обеспечивает невероятную плавность при любой скорости.
+      const angle = Math.atan2(this.vy, this.vx);
+      this.el.style.transform = `translate3d(${this.x}px, ${this.y}px, 0) rotate(${angle}rad)`;
+    }
+  }
+
+  function initSwarm() {
+    const container = document.getElementById('particle-container');
+    if (!container) return;
+    
+    const existing = container.querySelectorAll('div > svg');
+    existing.forEach(e => e.parentElement?.remove());
+
+    let bugs: CyberRoachDOM[] = [];
+    let cssWidth = container.offsetWidth;
+    let cssHeight = container.offsetHeight;
+
+    const mouse = {
+      x: -1000,
+      y: -1000,
+      radius: window.innerWidth <= 768 ? 80 : 120
+    };
+
+    function resize() {
+      cssWidth = container.offsetWidth;
+      cssHeight = container.offsetHeight;
+    }
+
+    const numberOfBugs = 30; 
+    for (let i = 0; i < numberOfBugs; i++) {
+      let x = Math.random() * cssWidth;
+      let y = Math.random() * cssHeight;
+      bugs.push(new CyberRoachDOM(x, y, container));
+    }
+
+    let lastTime = 0;
+    let animationFrameId: number;
+    let isVisible = true;
+
+    function animate(time: number) {
+      if (!isVisible) return; // Stop animating if not visible
+      
+      animationFrameId = requestAnimationFrame(animate);
+      if (!lastTime) lastTime = time;
+      const dt = Math.min((time - lastTime) / 16.666, 3.0);
+      lastTime = time;
+
+      for (let i = 0; i < bugs.length; i++) {
+        bugs[i].update(mouse, cssWidth, cssHeight, dt);
+      }
+    }
+
+    // Intersection Observer to pause animation when out of view (saves battery and CPU)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          lastTime = performance.now();
+          animationFrameId = requestAnimationFrame(animate);
+        } else {
+          cancelAnimationFrame(animationFrameId);
+        }
+      });
+    }, { threshold: 0 });
+    
+    observer.observe(container);
+
+    window.addEventListener('resize', () => {
+      mouse.radius = window.innerWidth <= 768 ? 80 : 120;
+      resize();
+    });
+
+    // Привязываем события ко всему окну, чтобы они всегда срабатывали корректно
+    window.addEventListener('mousemove', (event) => {
+      if (!isVisible) return;
+      const rect = container.getBoundingClientRect();
+      mouse.x = event.clientX - rect.left;
+      mouse.y = event.clientY - rect.top;
+    });
+    window.addEventListener('mouseleave', () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    window.addEventListener('touchstart', (event) => {
+      if (!isVisible) return;
+      if (event.touches.length > 0) {
+        const rect = container.getBoundingClientRect();
+        mouse.x = event.touches[0].clientX - rect.left;
+        mouse.y = event.touches[0].clientY - rect.top;
+      }
+    }, { passive: true });
+    
+    window.addEventListener('touchmove', (event) => {
+      if (!isVisible) return;
+      if (event.touches.length > 0) {
+        const rect = container.getBoundingClientRect();
+        mouse.x = event.touches[0].clientX - rect.left;
+        mouse.y = event.touches[0].clientY - rect.top;
+      }
+    }, { passive: true });
+
+    resize();
+  }
+  document.addEventListener('astro:page-load', initSwarm);
+</script>

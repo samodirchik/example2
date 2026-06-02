@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Варианты отрисовки тараканов</title>
+  <style>
+    body { 
+      background-color: #f0f4f8; 
+      font-family: 'Inter', sans-serif; 
+      display: flex; 
+      gap: 20px; 
+      flex-wrap: wrap; 
+      padding: 40px; 
+      justify-content: center;
+    }
+    .card { 
+      background: white; 
+      border-radius: 12px; 
+      padding: 20px; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+      text-align: center; 
+      width: 250px; 
+    }
+    canvas { 
+      background: #e2e8f0; 
+      border-radius: 8px; 
+      margin-top: 15px; 
+      border: 1px solid #cbd5e1;
+    }
+    h3 { margin: 0 0 10px 0; color: #1e293b; font-size: 18px; }
+    p { margin: 0; color: #64748b; font-size: 14px; min-height: 40px; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h3>Вариант 1: Точка</h3>
+  <p>Радиус 1.5px. Выглядит просто как пылинка/соринка.</p>
+  <canvas id="c1" width="200" height="200"></canvas>
+</div>
+
+<div class="card">
+  <h3>Вариант 2: Базовый овал</h3>
+  <p>Без лапок. Размер 4x2px. Напоминает личинку.</p>
+  <canvas id="c2" width="200" height="200"></canvas>
+</div>
+
+<div class="card">
+  <h3>Вариант 3: "Кибер-таракан"</h3>
+  <p>Тот самый, с прямыми лапками и усиками (длина ~12px).</p>
+  <canvas id="c3" width="200" height="200"></canvas>
+</div>
+
+<div class="card">
+  <h3>Вариант 4: Реалистичный силуэт</h3>
+  <p>Голова, тело, суставы на лапках. Размер ~20px.</p>
+  <canvas id="c4" width="200" height="200"></canvas>
+</div>
+
+<div class="card">
+  <h3>Вариант 5: Крупный жук</h3>
+  <p>Жирные линии, массивное тело. Хорошо заметен.</p>
+  <canvas id="c5" width="200" height="200"></canvas>
+</div>
+
+<script>
+  function draw(id, renderFn) {
+    const canvas = document.getElementById(id);
+    const ctx = canvas.getContext('2d');
+    
+    // Рисуем сетку для масштаба
+    ctx.strokeStyle = 'rgba(0,0,0,0.05)';
+    ctx.lineWidth = 1;
+    for(let i=0; i<=200; i+=20) {
+      ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 200); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(200, i); ctx.stroke();
+    }
+
+    ctx.translate(100, 100);
+    // Рисуем 3 жуков под разными углами
+    for(let i=0; i<3; i++) {
+      ctx.save();
+      ctx.rotate((Math.PI * 2 / 3) * i);
+      ctx.translate(0, -45);
+      
+      // Поворачиваем чтобы смотрели по кругу
+      ctx.rotate(Math.PI / 2);
+      
+      renderFn(ctx);
+      ctx.restore();
+    }
+  }
+
+  // 1. Точка
+  draw('c1', (ctx) => {
+    ctx.fillStyle = 'rgba(101, 67, 33, 1)';
+    ctx.beginPath(); ctx.arc(0, 0, 1.5, 0, Math.PI*2); ctx.fill();
+  });
+
+  // 2. Овал
+  draw('c2', (ctx) => {
+    ctx.fillStyle = 'rgba(101, 67, 33, 1)';
+    ctx.beginPath(); ctx.ellipse(0, 0, 4, 2, 0, 0, Math.PI*2); ctx.fill();
+  });
+
+  // 3. Кибер-таракан
+  draw('c3', (ctx) => {
+    ctx.strokeStyle = 'rgba(101, 67, 33, 1)';
+    ctx.fillStyle = 'rgba(101, 67, 33, 1)';
+    ctx.lineWidth = 1;
+    let l = 6, w = 3;
+    ctx.beginPath(); ctx.ellipse(0, 0, l, w, 0, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(l*0.8, -w*0.3); ctx.lineTo(l*2, -w*1.5);
+    ctx.moveTo(l*0.8, w*0.3); ctx.lineTo(l*2, w*1.5); ctx.stroke();
+    for(let i=-1; i<=1; i++) {
+      ctx.beginPath(); ctx.moveTo(i*l*0.4, -w*0.8); ctx.lineTo((i-0.2)*l*0.8, -w*2.5); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(i*l*0.4, w*0.8); ctx.lineTo((i-0.2)*l*0.8, w*2.5); ctx.stroke();
+    }
+  });
+
+  // 4. Реалистичный
+  draw('c4', (ctx) => {
+    ctx.strokeStyle = 'rgba(70, 40, 20, 1)';
+    ctx.fillStyle = 'rgba(70, 40, 20, 1)';
+    ctx.lineWidth = 1;
+    
+    // Тело (брюшко, грудь)
+    ctx.beginPath(); ctx.ellipse(-2, 0, 6, 4, 0, 0, Math.PI*2); ctx.fill(); 
+    ctx.beginPath(); ctx.ellipse(4, 0, 3, 3.5, 0, 0, Math.PI*2); ctx.fill(); 
+    // Голова
+    ctx.beginPath(); ctx.arc(7, 0, 1.5, 0, Math.PI*2); ctx.fill(); 
+    
+    // Усы
+    ctx.beginPath();
+    ctx.moveTo(7, -1); ctx.quadraticCurveTo(12, -5, 18, -4);
+    ctx.moveTo(7, 1); ctx.quadraticCurveTo(12, 5, 18, 4);
+    ctx.stroke();
+
+    // Лапки с суставами
+    ctx.lineWidth = 1;
+    // Передние
+    ctx.beginPath(); ctx.moveTo(4, -3); ctx.lineTo(6, -6); ctx.lineTo(10, -8); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(4, 3); ctx.lineTo(6, 6); ctx.lineTo(10, 8); ctx.stroke();
+    // Средние
+    ctx.beginPath(); ctx.moveTo(2, -4); ctx.lineTo(1, -8); ctx.lineTo(3, -11); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(2, 4); ctx.lineTo(1, 8); ctx.lineTo(3, 11); ctx.stroke();
+    // Задние
+    ctx.beginPath(); ctx.moveTo(-2, -4); ctx.lineTo(-5, -9); ctx.lineTo(-2, -14); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-2, 4); ctx.lineTo(-5, 9); ctx.lineTo(-2, 14); ctx.stroke();
+  });
+
+  // 5. Крупный жук
+  draw('c5', (ctx) => {
+    ctx.strokeStyle = 'rgba(50, 20, 10, 1)';
+    ctx.fillStyle = 'rgba(50, 20, 10, 1)';
+    ctx.lineWidth = 2;
+    
+    ctx.beginPath(); ctx.ellipse(0, 0, 8, 5, 0, 0, Math.PI*2); ctx.fill(); 
+    
+    // Толстые лапы
+    ctx.beginPath(); ctx.moveTo(0, -4); ctx.lineTo(-4, -10); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, 4); ctx.lineTo(-4, 10); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(3, -4); ctx.lineTo(6, -10); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(3, 4); ctx.lineTo(6, 10); ctx.stroke();
+    
+    ctx.beginPath(); ctx.moveTo(8, -2); ctx.lineTo(15, -6); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(8, 2); ctx.lineTo(15, 6); ctx.stroke();
+  });
+</script>
+</body>
+</html>
