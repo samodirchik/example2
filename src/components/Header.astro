@@ -21,7 +21,7 @@ const t = useTranslations(lang);
     </div>
 
     <!-- Navigation -->
-    <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-medium text-[var(--color-text-main)] whitespace-nowrap">
+    <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6 text-sm font-medium text-[var(--color-text-main)] whitespace-nowrap">
       <a href={lang === 'ru' ? '/ru' : '/'} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.home')}</a>
       <a href={lang === 'ru' ? '/o-nac-ru' : '/o-nac'} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.about')}</a>
       
@@ -73,7 +73,7 @@ const t = useTranslations(lang);
         </div>
       </div>
 
-      <a href="#consultation-form" class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.shop')}</a>
+      <a href={lang === 'ru' ? '/prodazha-himii-ru' : '/prodazh-khimii-ua'} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.shop')}</a>
 
       <!-- Dropdown: Дезинфекция -->
       <div class="relative group">
@@ -93,10 +93,10 @@ const t = useTranslations(lang);
     </nav>
 
     <!-- Contacts block -->
-    <div class="hidden lg:flex items-center gap-4 flex-shrink-0 ml-4">
+    <div class="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0 ml-2 xl:ml-4">
       
       <!-- Language Switcher Desktop -->
-      <div class="flex items-center gap-2 mr-2">
+      <div class="flex items-center gap-2 mr-1 xl:mr-2">
         <a href="/ru" class={`text-sm font-bold ${lang === 'ru' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>RU</a>
         <span class="text-gray-300 text-xs">|</span>
         <a href="/" class={`text-sm font-bold ${lang === 'ua' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>UA</a>
@@ -118,7 +118,9 @@ const t = useTranslations(lang);
         </a>
       </div>
 
-      <Button text={t('nav.call')} href="#consultation-form" variant="primary" class="ml-2 px-6 py-3 text-xs shadow-md" />
+      <div class="hidden 2xl:block">
+        <Button text={t('nav.call')} href="#consultation-form" variant="primary" class="ml-2 px-6 py-3 text-xs shadow-md" />
+      </div>
     </div>
 
     <!-- Mobile menu button -->
@@ -208,7 +210,7 @@ const t = useTranslations(lang);
       </div>
       
       <div class="text-[9px] text-[var(--color-accent-primary)] font-black uppercase tracking-[0.2em] mt-1 border-b border-[rgba(0,0,0,0.05)] pb-1">Магазин</div>
-      <a href="#consultation-form" class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.shop')}</a>
+      <a href={lang === 'ru' ? '/prodazha-himii-ru' : '/prodazh-khimii-ua'} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.shop')}</a>
       
       <div class="text-[9px] text-[var(--color-accent-primary)] font-black uppercase tracking-[0.2em] mt-1 border-b border-[rgba(0,0,0,0.05)] pb-1">Информация</div>
       <a href={lang === 'ru' ? '/kontakty-ru' : '/kontakty-ua'} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.contacts')}</a>
