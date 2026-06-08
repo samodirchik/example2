@@ -3,7 +3,7 @@
 // НАСТРОЙКИ TELEGRAM БОТА
 // ==========================================
 $token = "8950429454:AAH7V2k6A2OKw3dPhagdfrLVtW6C-7ghed8";
-$chat_id = "386472158";
+$chat_id = "-5156373374";
 
 // Разрешаем CORS (если форма отправляется AJAX запросом с другого домена)
 header('Access-Control-Allow-Origin: *');
