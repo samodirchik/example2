@@ -56,7 +56,7 @@ export const ui = {
     'hero.f3': 'Досвід роботи більше 9-ти років',
     'hero.f4': 'Обробка за 30 хвилин без плям та запаху',
     'hero.f5': 'Тільки європейська ліцензована хімія',
-    'hero.f6': 'Бар\'єрна захист у подарунок',
+    'hero.f6': 'Бар\'єрний захист у подарунок',
     'hero.discount.badge': 'Спеціальна пропозиція',
     'hero.discount.title': 'ЗНИЖКА -20%',
     'hero.discount.text': 'Встигніть отримати знижку на першу обробку. Акція діє до',
@@ -68,6 +68,9 @@ export const ui = {
 
     // Footer
     'footer.desc': 'Дезінсекція - знищення тарганів по всій Україні',
+    'footer.rights': 'Всі права захищені.',
+    'footer.dev': 'Created by ',
+    'footer.studio': 'sdccode.studio',
 
     // ConsultationForm
     'form.title1': 'Безкоштовна консультація',
@@ -141,6 +144,9 @@ export const ui = {
 
     // Footer
     'footer.desc': 'Дезинсекция - уничтожение тараканов по всей Украине',
+    'footer.rights': 'Все права защищены.',
+    'footer.dev': 'Created by ',
+    'footer.studio': 'sdccode.studio',
 
     // ConsultationForm
     'form.title1': 'Бесплатная консультация',

@@ -16,12 +16,49 @@ const data = testimonialsData[lang];
       <div class="w-24 h-1 bg-[var(--color-accent-primary)] mx-auto rounded-full"></div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {[1, 2, 3, 4].map((num) => (
-        <div class="glass-panel p-2 rounded-3xl hover-spring">
-          <img src={`/images/feedback-${num}.jpg`} alt={`Review ${num}`} width="600" height="800" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl" />
-        </div>
-      ))}
+    <div class="relative">
+      <div id="test-carousel" class="flex sm:grid overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory sm:snap-none grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        {[1, 2, 3, 4].map((num) => (
+          <div class="glass-panel p-2 rounded-3xl hover-spring flex-shrink-0 w-[85vw] sm:w-auto snap-center sm:snap-align-none relative">
+            <img src={`/images/feedback-${num}.jpg`} alt={`Review ${num}`} width="600" height="800" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl" />
+          </div>
+        ))}
+      </div>
+
+      <!-- Mobile navigation arrows overlay -->
+      <button onclick="scrollCarousel('test-carousel', -1)" aria-label="Попередній" class="sm:hidden absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 shadow-xl z-20 hover:bg-black/60 active:scale-90 transition-all pointer-events-auto">
+        <svg class="w-6 h-6 ml-[-2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+      </button>
+      <button onclick="scrollCarousel('test-carousel', 1)" aria-label="Наступний" class="sm:hidden absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 shadow-xl z-20 hover:bg-black/60 active:scale-90 transition-all pointer-events-auto">
+        <svg class="w-6 h-6 mr-[-2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+      </button>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  if (typeof window.scrollCarousel !== 'function') {
+    window.scrollCarousel = function(id, direction) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      
+      const scrollPos = el.scrollLeft;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      const scrollAmount = window.innerWidth * 0.85;
+
+      if (direction === 1) {
+        if (scrollPos >= maxScroll - 10) {
+          el.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      } else {
+        if (scrollPos <= 10) {
+          el.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        } else {
+          el.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+      }
+    };
+  }
+</script>

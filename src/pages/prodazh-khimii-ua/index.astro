@@ -1,0 +1,544 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ParticleBackground from '../../components/ParticleBackground.astro';
+import ConsultationForm from '../../components/sections/ConsultationForm.astro';
+
+const lang = 'ua';
+---
+
+<Layout title="Продаж хімії" description="Купити засоби для дезінсекції та дератизації. Авторські концентровані препарати" lang={lang}>
+  <ParticleBackground />
+  <Header lang={lang} />
+  <main class="pt-36 relative z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <!-- Text Content -->
+        <div class="text-center lg:text-left animate-fade-in-up flex flex-col items-center lg:items-start">
+          <div class="mb-4 inline-flex items-center justify-center px-4 py-2 rounded-full glass-panel text-sm font-semibold text-[var(--color-text-main)] shadow-sm self-center lg:self-start">
+            <span class="w-2 h-2 rounded-full bg-[var(--color-accent-primary)] animate-pulse mr-2"></span>
+            Увага, Акція!
+          </div>
+          
+          <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight tracking-tighter" style="font-family: var(--font-heading)">
+            Засоби №1 від <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent-primary)] to-[#00d2ff]">
+              Комах та Гризунів
+            </span>
+          </h1>
+          
+          <ul class="text-base md:text-lg text-[var(--color-text-main)] font-bold mb-10 space-y-4 max-w-xl text-left inline-block">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Купити засоби для дезінсекції та дератизації - Гарантія - 12 місяців!
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Авторські концентровані препарати
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Без запаху, не залишає слідів і плям
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Безпечно для людей і тварин
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Самостійна обробка
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Консультація та інструкція майстра 24/7
+            </li>
+          </ul>
+
+          <div class="mb-10 inline-block relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-400 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+            <div class="relative px-8 py-4 bg-red-600 rounded-lg leading-none flex items-center hover-spring shadow-2xl">
+              <span class="flex items-center space-x-2 text-white font-bold text-2xl tracking-widest uppercase" style="font-family: var(--font-heading)">
+                <svg class="w-8 h-8 text-white mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                Mr.Cucaracha
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timer -->
+        <div class="flex justify-center items-center relative animate-fade-in-up" style="animation-delay: 0.3s">
+          <div class="glass-panel p-8 md:p-10 rounded-[40px] text-center border border-[rgba(255,255,255,0.4)] shadow-2xl relative z-10 w-full max-w-lg">
+            <div class="inline-block px-4 py-1 rounded-full bg-[rgba(239,68,68,0.1)] text-red-500 text-sm font-bold uppercase tracking-wider mb-6 border border-[rgba(239,68,68,0.3)]">
+              Увага, Акція!
+            </div>
+
+            <h2 class="text-4xl md:text-6xl font-black text-red-500 mb-2 drop-shadow-sm" style="font-family: var(--font-heading)">
+              -30%
+            </h2>
+
+            <p class="text-[var(--color-text-muted)] mb-8 text-sm leading-relaxed">
+              Акція діє до <span class="current-day-label font-bold text-[var(--color-text-main)]"></span>.
+            </p>
+
+            <div class="flex justify-center gap-3 md:gap-4 mb-8">
+              <div class="flex flex-col items-center">
+                <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
+                  <span class="timer-days">00</span>
+                </div>
+                <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">днів</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
+                  <span class="timer-hours">23</span>
+                </div>
+                <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">годин</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
+                  <span class="timer-minutes">59</span>
+                </div>
+                <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">хвилин</span>
+              </div>
+              <div class="flex flex-col items-center relative">
+                <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-red-500 border border-red-200 shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-pulse">
+                  <span class="timer-seconds">53</span>
+                </div>
+                <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-red-500">секунд</span>
+              </div>
+            </div>
+
+            <a href="#consultation-form" class="block w-full py-4 px-6 rounded-full bg-[var(--color-accent-primary)] text-white font-bold text-lg uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-lg hover:shadow-xl text-center">Замовити</a>
+          </div>
+        </div>
+      </div>
+      <h2 class="text-3xl font-bold text-center text-[var(--color-text-main)] mb-12" style="font-family: var(--font-heading)">Купити Засоби від:</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-16">
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/cockroach-копия.png" alt="Таргани" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Таргани</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/bed-bug.png" alt="Клопи" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Клопи</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/insect-3.png" alt="Блохи" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Блохи</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/insect-4.png" alt="Кліщі" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Кліщі</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/10/mouseb.png" alt="Щури" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Щури</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/10/ratb.png" alt="Миші" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Миші</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/insect-2.png" alt="Павуки" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Павуки</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/photo_2024-08-23_09-12-36.png" alt="Мошки" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Мошки</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/mosquito-1.png" alt="Комарі" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Комарі</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/ant.png" alt="Мурахи" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Мурахи</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/fly.png" alt="Мухи" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Мухи</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/insect.png" alt="Моль" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Моль</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/leaf-insect.png" alt="Тля" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Тля</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/wasp.png" alt="Оси" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Оси</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/pest-1.png" alt="Колорадські жуки" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Колорадські жуки</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/beetle.png" alt="Хрущі" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Хрущі</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/hornet-1.png" alt="Шершні" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Шершні</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/termite.png" alt="Короїди" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Короїди</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/centipede-1.png" alt="Сколопендри" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Сколопендри</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/grub.png" alt="Гусениці" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Гусениці</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/insect4444.png" alt="Щитівки" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Щитівки</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/fly-1.png" alt="Оводи" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Оводи</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/bee.png" alt="Бджіл" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Бджіл</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/insect-1.png" alt="Мокриці" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Мокриці</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/beetle-2.png" alt="Шкіроїди" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Шкіроїди</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/termite-1.png" alt="Терміти" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Терміти</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/leaf.png" alt="Плодожерки" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Плодожерки</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 грн.</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">грн.</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Замовити</a>
+        </div>
+      </div>
+    </div>
+    <div id="consultation-form"></div>
+    <ConsultationForm lang={lang} />
+  </main>
+  <Footer lang={lang} />
+
+<script is:inline>
+  function initShopTimer() {
+    const labels = document.querySelectorAll('.current-day-label');
+    labels.forEach(label => {
+      const now = new Date();
+      const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+      const isUa = document.documentElement.lang === 'ua' || window.location.pathname.includes('-ua');
+      label.textContent = now.toLocaleDateString(isUa ? 'uk-UA' : 'ru-RU', options);
+    });
+
+    const endTime = new Date();
+    endTime.setHours(23, 59, 59, 999);
+
+    const dEls = document.querySelectorAll('.timer-days');
+    const hEls = document.querySelectorAll('.timer-hours');
+    const mEls = document.querySelectorAll('.timer-minutes');
+    const sEls = document.querySelectorAll('.timer-seconds');
+
+    function update() {
+      const now = new Date();
+      const diff = endTime.getTime() - now.getTime();
+
+      if (diff <= 0) return;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      dEls.forEach(el => el.textContent = days.toString().padStart(2, '0'));
+      hEls.forEach(el => el.textContent = hours.toString().padStart(2, '0'));
+      mEls.forEach(el => el.textContent = minutes.toString().padStart(2, '0'));
+      sEls.forEach(el => el.textContent = seconds.toString().padStart(2, '0'));
+    }
+
+    update();
+    if(window.shopTimerInterval) clearInterval(window.shopTimerInterval);
+    window.shopTimerInterval = setInterval(update, 1000);
+  }
+
+  document.addEventListener('astro:page-load', initShopTimer);
+</script>
+</Layout>

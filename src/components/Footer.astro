@@ -13,7 +13,7 @@ const t = useTranslations(lang);
       
       <!-- Logo and Description -->
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
-        <a href={lang === 'ru' ? '/ru' : '/'} class="text-2xl font-bold tracking-tighter hover:text-[var(--color-accent-primary)] transition-colors" style="font-family: var(--font-heading)">PRUSSAKOFF</a>
+        <a href={lang === 'ru' ? '/ru' : '/'} class="text-2xl font-bold tracking-tighter hover:text-[var(--color-accent-primary)] transition-colors" style="font-family: var(--font-heading)">CUCARACHA</a>
         <div class="text-[10px] text-[var(--color-text-muted)] uppercase tracking-widest mt-2 max-w-xs">
           {t('footer.desc')}
         </div>
@@ -23,14 +23,15 @@ const t = useTranslations(lang);
       <div class="flex flex-col items-center lg:items-end gap-4">
         
         <div class="flex flex-col items-center lg:items-end gap-1">
-          <a href="tel:+380977476133" class="text-xl lg:text-lg font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] transition-colors leading-tight">+ 38 (097) 747 61 33</a>
-          <a href="tel:+380502656142" class="text-xl lg:text-lg font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] transition-colors leading-tight">+ 38 (050) 265 61 42</a>
+          <a href="tel:+380956602238" class="text-xl lg:text-lg font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] transition-colors leading-tight">+ 38 (095) 660 22 38</a>
+          <a href="tel:+380976080785" class="text-xl lg:text-lg font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] transition-colors leading-tight">+ 38 (097) 608 07 85</a>
           <span class="text-[10px] text-[var(--color-text-muted)] font-medium mt-1 uppercase tracking-wide">{t('header.247')}</span>
         </div>
         
         <!-- Copyright -->
-        <div class="text-[10px] text-[var(--color-text-muted)]">
-          &copy; {new Date().getFullYear()} PRUSSAKOFF. Все права защищены.
+        <div class="text-[10px] text-[var(--color-text-muted)] flex flex-col items-center lg:items-end gap-1">
+          <span>&copy; {new Date().getFullYear()} CUCARACHA. {t('footer.rights')}</span>
+          <span>{t('footer.dev')}<a href="https://sdccode.com/" target="_blank" rel="noopener noreferrer" id="studio-link" class="inline-block ml-1 font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent-primary)] to-purple-500 hover:scale-105 transition-transform duration-300">{t('footer.studio')}</a></span>
         </div>
         
       </div>
