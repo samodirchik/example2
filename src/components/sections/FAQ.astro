@@ -44,28 +44,28 @@ const data = faqData[lang];
 </section>
 
 <script is:inline>
-  document.addEventListener('astro:page-load', function() {
-    const faqButtons = document.querySelectorAll('.faq-item button');
-    
-    faqButtons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const item = this.closest('.faq-item');
-        if (!item) return;
+  if (!window.faqInitialized) {
+    window.faqInitialized = true;
+    document.addEventListener('click', function(e) {
+      const button = e.target.closest('.faq-item button');
+      if (!button) return;
+      
+      e.preventDefault();
+      const item = button.closest('.faq-item');
+      if (!item) return;
 
-        const isOpen = item.classList.contains('is-open');
-        const allItems = document.querySelectorAll('.faq-item');
-        
-        // Close all
-        allItems.forEach(faq => {
-          faq.classList.remove('is-open');
-        });
-
-        // Open clicked if it wasn't open
-        if (!isOpen) {
-          item.classList.add('is-open');
-        }
+      const isOpen = item.classList.contains('is-open');
+      const allItems = document.querySelectorAll('.faq-item');
+      
+      // Close all
+      allItems.forEach(faq => {
+        faq.classList.remove('is-open');
       });
+
+      // Open clicked if it wasn't open
+      if (!isOpen) {
+        item.classList.add('is-open');
+      }
     });
-  });
+  }
 </script>

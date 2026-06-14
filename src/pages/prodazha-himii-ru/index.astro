@@ -66,49 +66,10 @@ const lang = 'ru';
           </div>
         </div>
 
-        <!-- Timer -->
+        <!-- Consultation Form -->
         <div class="flex justify-center items-center relative animate-fade-in-up" style="animation-delay: 0.3s">
-          <div class="glass-panel p-8 md:p-10 rounded-[40px] text-center border border-[rgba(255,255,255,0.4)] shadow-2xl relative z-10 w-full max-w-lg">
-            <div class="inline-block px-4 py-1 rounded-full bg-[rgba(239,68,68,0.1)] text-red-500 text-sm font-bold uppercase tracking-wider mb-6 border border-[rgba(239,68,68,0.3)]">
-              Внимание, Акция!
-            </div>
-
-            <h2 class="text-4xl md:text-6xl font-black text-red-500 mb-2 drop-shadow-sm" style="font-family: var(--font-heading)">
-              -30%
-            </h2>
-
-            <p class="text-[var(--color-text-muted)] mb-8 text-sm leading-relaxed">
-              Акция действует до <span class="current-day-label font-bold text-[var(--color-text-main)]"></span>.
-            </p>
-
-            <div class="flex justify-center gap-3 md:gap-4 mb-8">
-              <div class="flex flex-col items-center">
-                <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
-                  <span class="timer-days">00</span>
-                </div>
-                <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">дней</span>
-              </div>
-              <div class="flex flex-col items-center">
-                <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
-                  <span class="timer-hours">23</span>
-                </div>
-                <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">часов</span>
-              </div>
-              <div class="flex flex-col items-center">
-                <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
-                  <span class="timer-minutes">59</span>
-                </div>
-                <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">минут</span>
-              </div>
-              <div class="flex flex-col items-center relative">
-                <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-red-500 border border-red-200 shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-pulse">
-                  <span class="timer-seconds">53</span>
-                </div>
-                <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-red-500">секунд</span>
-              </div>
-            </div>
-
-            <a href="#consultation-form" class="block w-full py-4 px-6 rounded-full bg-[var(--color-accent-primary)] text-white font-bold text-lg uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-lg hover:shadow-xl text-center">Заказать</a>
+          <div class="w-full max-w-lg">
+            <ConsultationForm lang={lang} compact={true} />
           </div>
         </div>
       </div>
@@ -495,50 +456,6 @@ const lang = 'ru';
       </div>
     </div>
     <div id="consultation-form"></div>
-    <ConsultationForm lang={lang} />
   </main>
   <Footer lang={lang} />
-
-<script is:inline>
-  function initShopTimer() {
-    const labels = document.querySelectorAll('.current-day-label');
-    labels.forEach(label => {
-      const now = new Date();
-      const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-      const isUa = document.documentElement.lang === 'ua' || window.location.pathname.includes('-ua');
-      label.textContent = now.toLocaleDateString(isUa ? 'uk-UA' : 'ru-RU', options);
-    });
-
-    const endTime = new Date();
-    endTime.setHours(23, 59, 59, 999);
-
-    const dEls = document.querySelectorAll('.timer-days');
-    const hEls = document.querySelectorAll('.timer-hours');
-    const mEls = document.querySelectorAll('.timer-minutes');
-    const sEls = document.querySelectorAll('.timer-seconds');
-
-    function update() {
-      const now = new Date();
-      const diff = endTime.getTime() - now.getTime();
-
-      if (diff <= 0) return;
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / 1000 / 60) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      dEls.forEach(el => el.textContent = days.toString().padStart(2, '0'));
-      hEls.forEach(el => el.textContent = hours.toString().padStart(2, '0'));
-      mEls.forEach(el => el.textContent = minutes.toString().padStart(2, '0'));
-      sEls.forEach(el => el.textContent = seconds.toString().padStart(2, '0'));
-    }
-
-    update();
-    if(window.shopTimerInterval) clearInterval(window.shopTimerInterval);
-    window.shopTimerInterval = setInterval(update, 1000);
-  }
-
-  document.addEventListener('astro:page-load', initShopTimer);
-</script>
 </Layout>

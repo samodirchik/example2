@@ -3,16 +3,18 @@ import { useTranslations } from '../../i18n/ui';
 
 interface Props {
   lang?: 'ru' | 'ua';
+  compact?: boolean;
 }
-const { lang = 'ua' } = Astro.props;
+const { lang = 'ua', compact = false } = Astro.props;
 const t = useTranslations(lang);
 ---
-<section class="relative py-24 px-4 sm:px-6 z-10" id="consultation-form">
-  <div class="max-w-7xl mx-auto glass-panel p-6 sm:p-10 md:p-16 rounded-[30px] md:rounded-[40px] shadow-2xl border border-[rgba(255,255,255,0.6)] overflow-hidden">
+<section class={`relative z-10 ${compact ? 'w-full' : 'py-24 px-4 sm:px-6'}`} id="consultation-form">
+  <div class={`${compact ? 'w-full' : 'max-w-7xl mx-auto glass-panel p-6 sm:p-10 md:p-16 rounded-[30px] md:rounded-[40px] shadow-2xl border border-[rgba(255,255,255,0.6)] overflow-hidden'}`}>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+    <div class={`${compact ? 'block w-full' : 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'} relative z-10`}>
       
       <!-- Text Side -->
+      {!compact && (
       <div>
         <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[var(--color-text-main)] leading-tight" style="font-family: var(--font-heading)">
           {t('form.title1')} <br/>
@@ -33,10 +35,11 @@ const t = useTranslations(lang);
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      )}
 
       <!-- Form Side -->
-      <div class="bg-white/80 backdrop-blur-xl p-4 md:p-8 rounded-3xl border border-white shadow-xl relative">
+      <div class={compact ? "glass-panel p-6 sm:p-8 md:p-10 rounded-[30px] md:rounded-[40px] border border-[rgba(255,255,255,0.4)] shadow-2xl relative w-full" : "bg-white/80 backdrop-blur-xl p-4 md:p-8 rounded-3xl border border-white shadow-xl relative"}>
         <div class="text-center mb-6 md:mb-8">
           <h3 class="text-2xl font-black mb-1" style="font-family: var(--font-heading)">{t('form.box.title1')}</h3>
           <div class="text-[var(--color-accent-primary)] font-bold text-sm tracking-widest uppercase mb-3">{t('form.box.title2')}</div>
@@ -127,7 +130,7 @@ const t = useTranslations(lang);
     }
     
     forms.forEach(form => {
-      form.addEventListener('submit', async (e) => {
+      form.onsubmit = async (e) => {
         e.preventDefault();
         
         const phoneInput = form.querySelector('input[name="tel"]');
@@ -226,7 +229,7 @@ const t = useTranslations(lang);
           submitBtn.style.opacity = '1';
           submitBtn.innerHTML = originalText;
         }
-      });
+      };
     });
   });
 </script>

@@ -1,5 +1,6 @@
 ---
 import Button from '../Button.astro';
+import ConsultationForm from './ConsultationForm.astro';
 import { useTranslations } from '../../i18n/ui';
 
 interface Props {
@@ -65,96 +66,11 @@ const t = useTranslations(lang);
       
     </div>
 
-    <!-- Right Side (Discount Timer) -->
+    <!-- Right Side (Consultation Form) -->
     <div class="flex justify-center items-center relative animate-fade-in-up" style="animation-delay: 0.3s">
-      <div class="glass-panel p-8 md:p-10 rounded-[40px] text-center border border-[rgba(255,255,255,0.4)] shadow-2xl relative z-10 w-full max-w-lg">
-        
-        <div class="inline-block px-4 py-1 rounded-full bg-[rgba(239,68,68,0.1)] text-red-500 text-sm font-bold uppercase tracking-wider mb-6 border border-[rgba(239,68,68,0.3)]">
-          {t('hero.discount.badge')}
-        </div>
-
-        <h2 class="text-4xl md:text-5xl font-black text-red-500 mb-2 drop-shadow-sm" style="font-family: var(--font-heading)">
-          {t('hero.discount.title')}
-        </h2>
-
-        <p class="text-[var(--color-text-muted)] mb-8 text-sm leading-relaxed">
-          {t('hero.discount.text')} <span id="current-day-label" class="font-bold text-[var(--color-text-main)]"></span>.
-        </p>
-
-        <!-- Timer -->
-        <div class="flex justify-center gap-3 md:gap-4 mb-8">
-          <div class="flex flex-col items-center">
-            <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
-              <span id="timer-days">00</span>
-            </div>
-            <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">{t('hero.timer.d')}</span>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
-              <span id="timer-hours">23</span>
-            </div>
-            <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">{t('hero.timer.h')}</span>
-          </div>
-          <div class="flex flex-col items-center">
-            <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-[var(--color-accent-primary)] border border-white/60 shadow-lg">
-              <span id="timer-minutes">59</span>
-            </div>
-            <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">{t('hero.timer.m')}</span>
-          </div>
-          <div class="flex flex-col items-center relative">
-            <div class="bg-white/50 backdrop-blur-md w-16 h-20 md:w-20 md:h-24 flex items-center justify-center rounded-2xl mb-2 text-3xl font-black text-red-500 border border-red-200 shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-pulse">
-              <span id="timer-seconds">53</span>
-            </div>
-            <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-red-500">{t('hero.timer.s')}</span>
-          </div>
-        </div>
-
-        <Button text={t('hero.btn.discount')} href="#consultation-form" variant="primary" class="w-full text-lg py-5 shadow-[0_10px_20px_rgba(59,130,246,0.3)]" />
+      <div class="w-full max-w-lg">
+        <ConsultationForm lang={lang} compact={true} />
       </div>
     </div>
   </div>
 </section>
-
-<script is:inline>
-  function initTimer() {
-    const label = document.getElementById('current-day-label');
-    if (label) {
-      const now = new Date();
-      const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-      // @ts-ignore
-      const isUa = document.documentElement.lang === 'ua' || window.location.pathname.includes('-ua') || !window.location.pathname.includes('/ru/');
-      label.textContent = now.toLocaleDateString(isUa ? 'uk-UA' : 'ru-RU', options);
-    }
-
-    const endTime = new Date();
-    endTime.setHours(23, 59, 59, 999);
-
-    const dEl = document.getElementById('timer-days');
-    const hEl = document.getElementById('timer-hours');
-    const mEl = document.getElementById('timer-minutes');
-    const sEl = document.getElementById('timer-seconds');
-
-    function update() {
-      const now = new Date();
-      const diff = endTime.getTime() - now.getTime();
-
-      if (diff <= 0) return;
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / 1000 / 60) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      if (dEl) dEl.textContent = days.toString().padStart(2, '0');
-      if (hEl) hEl.textContent = hours.toString().padStart(2, '0');
-      if (mEl) mEl.textContent = minutes.toString().padStart(2, '0');
-      if (sEl) sEl.textContent = seconds.toString().padStart(2, '0');
-    }
-
-    update();
-    if(window.heroTimerInterval) clearInterval(window.heroTimerInterval);
-    window.heroTimerInterval = setInterval(update, 1000);
-  }
-
-  document.addEventListener('astro:page-load', initTimer);
-</script>

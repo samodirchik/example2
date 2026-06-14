@@ -7,6 +7,53 @@ interface Props {
 }
 const { lang = 'ua' } = Astro.props;
 const t = useTranslations(lang);
+
+const currentPath = Astro.url.pathname;
+const normalizedPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
+
+const routeMap: Record<string, string> = {
+  '/': '/ru',
+  '/o-nac': '/o-nac-ru',
+  '/prodazh-khimii-ua': '/prodazha-himii-ru',
+  '/kontakty-ua': '/kontakty-ru',
+  '/dezinsekciya-ua/klopy-ua': '/dezinsekciya-ru/klopy-ru',
+  '/dezinsekciya-ua/tarakany-ua': '/dezinsekciya-ru/tarakany-ru',
+  '/dezinsekciya-ua/blohi-ua': '/dezinsekciya-ru/blohi-ru',
+  '/dezinsekciya-ua/kleshchi-ua': '/dezinsekciya-ru/kleshchi-ru',
+  '/dezinsekciya-ua/murahy-ua': '/dezinsekciya-ru/muravi-ru',
+  '/dezinsekciya-ua/osy-ua': '/dezinsekciya-ru/osy-ru',
+  '/dezinsekciya-ua/mil-ua': '/dezinsekciya-ru/mol-ru',
+  '/dezinsekciya-ua/koroidy-ua': '/dezinsekciya-ru/koroedy-ru',
+  '/dezinsekciya-ua/sinoidy-ua': '/dezinsekciya-ru/senoedy-ru',
+  '/dezinsekciya-ua/shershni-ua': '/dezinsekciya-ru/shershni-ru',
+  '/dezinsekciya-ua/pavuky-ua': '/dezinsekciya-ru/pauki-ru',
+  '/dezinsekciya-ua/komari-ua': '/dezinsekciya-ru/komary-ru',
+  '/dezinsekciya-ua/muhy-ua': '/dezinsekciya-ru/muhi-ru',
+  '/dezinsekciya-ua/mokryci-ua': '/dezinsekciya-ru/mokricy-i-cheshujnicy-ru',
+  '/dezinsekciya-ua/shkiroidy-ua': '/dezinsekciya-ru/kozheedy-ru',
+  '/dezinsekciya-ua/hlibni-tochilnyky-ua': '/dezinsekciya-ru/hlebnye-tochilshiki-ru',
+  '/dezinsekciya-ua/moshky-ua': '/dezinsekciya-ru/moshki-ru',
+  '/dezinsekciya-ua/termity-ua': '/dezinsekciya-ru/termity-ru',
+  '/dezinsekciya-ua/skolopendry-ua': '/dezinsekciya-ru/skolopendry-ru',
+  '/dezinsekciya-ua/slyzni-ua': '/dezinsekciya-ru/slizni-ru',
+  '/deratyzaciya-ua/shchury-ta-myshi-ua': '/deratizaciya-ru/krysy-i-myshi-ru',
+  '/dezinfekciya-ua/virusy-i-bakterii-ua': '/dezinfekciya-ru/virusy-i-bakterii-ru',
+  '/dezinfekciya-ua/koronavirus-ua': '/dezinfekciya-ru/koronavirus-ru',
+  '/dezinfekciya-ua/plesen-i-gribok-ua': '/dezinfekciya-ru/plesen-i-gribok-ru',
+  '/dezinfekciya-ua/gorysha-ta-pidvaly-ua': '/dezinfekciya-ru/cherdaki-i-podvaly-ru'
+};
+
+let ruLink = '/ru';
+let uaLink = '/';
+
+if (lang === 'ua') {
+  ruLink = routeMap[normalizedPath] || '/ru';
+  uaLink = normalizedPath;
+} else {
+  const foundUa = Object.keys(routeMap).find(key => routeMap[key] === normalizedPath);
+  uaLink = foundUa || '/';
+  ruLink = normalizedPath;
+}
 ---
 
 <header class="fixed top-0 w-full z-50 p-4 lg:p-6 pointer-events-none">
@@ -97,9 +144,9 @@ const t = useTranslations(lang);
       
       <!-- Language Switcher Desktop -->
       <div class="flex items-center gap-2 mr-1 xl:mr-2">
-        <a href="/ru" class={`text-sm font-bold ${lang === 'ru' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>RU</a>
+        <a href={ruLink} class={`text-sm font-bold ${lang === 'ru' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>RU</a>
         <span class="text-gray-300 text-xs">|</span>
-        <a href="/" class={`text-sm font-bold ${lang === 'ua' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>UA</a>
+        <a href={uaLink} class={`text-sm font-bold ${lang === 'ua' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>UA</a>
       </div>
 
       <div class="flex flex-col items-end">
@@ -136,9 +183,9 @@ const t = useTranslations(lang);
       
       <!-- Language Switcher Mobile -->
       <div class="flex justify-center items-center gap-4 mb-2 pb-4 border-b border-[rgba(0,0,0,0.05)]">
-        <a href="/ru" class={`text-base font-bold ${lang === 'ru' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>RU</a>
+        <a href={ruLink} class={`text-base font-bold ${lang === 'ru' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>RU</a>
         <span class="text-gray-300 text-sm">|</span>
-        <a href="/" class={`text-base font-bold ${lang === 'ua' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>UA</a>
+        <a href={uaLink} class={`text-base font-bold ${lang === 'ua' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>UA</a>
       </div>
 
       <a href={lang === 'ru' ? '/ru' : '/'} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.home')}</a>
@@ -236,13 +283,13 @@ const t = useTranslations(lang);
 </header>
 
 <script is:inline>
-  document.addEventListener("astro:page-load", function() {
-    // SAFETY: Reset body overflow in case it was left hidden by View Transitions
-    document.body.style.overflow = "";
+  if (!window.headerInitialized) {
+    window.headerInitialized = true;
     let isOpen = false;
-    const menu = document.getElementById('mobile-menu');
-    
+
     function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (!menu) return;
       isOpen = !isOpen;
       if (isOpen) {
         menu.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-8');
@@ -255,22 +302,19 @@ const t = useTranslations(lang);
       }
     }
 
-    // 1. Mobile menu toggle button
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    if (menuBtn) {
-      menuBtn.addEventListener('click', function(e) {
+    document.addEventListener('click', function(e) {
+      const menuBtn = e.target.closest('#mobile-menu-btn');
+      if (menuBtn) {
         e.preventDefault();
         toggleMenu();
-      });
-    }
+        return;
+      }
 
-    // 2. Mobile dropdown buttons
-    const dropdownBtns = document.querySelectorAll('.mobile-dropdown .dropdown-toggle');
-    dropdownBtns.forEach(btn => {
-      btn.addEventListener('click', function(e) {
+      const dropdownToggle = e.target.closest('.mobile-dropdown .dropdown-toggle');
+      if (dropdownToggle) {
         e.preventDefault();
-        const content = this.parentElement.nextElementSibling;
-        const arrow = this.querySelector('.dropdown-arrow');
+        const content = dropdownToggle.parentElement.nextElementSibling;
+        const arrow = dropdownToggle.querySelector('.dropdown-arrow');
         if (content?.classList.contains('hidden')) {
           content.classList.remove('hidden');
           content.classList.add('flex');
@@ -280,15 +324,12 @@ const t = useTranslations(lang);
           content?.classList.remove('flex');
           arrow?.classList.remove('rotate-180');
         }
-      });
-    });
+        return;
+      }
 
-    // 3. Mobile links closing menu
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        
+      const mobileLink = e.target.closest('.mobile-link');
+      if (mobileLink) {
+        const href = mobileLink.getAttribute('href');
         if (href && href.startsWith('#') && href !== '#') {
           e.preventDefault();
           if (isOpen) toggleMenu();
@@ -299,7 +340,17 @@ const t = useTranslations(lang);
         } else {
           if (isOpen) toggleMenu();
         }
-      });
+      }
     });
-  });
+
+    document.addEventListener("astro:page-load", function() {
+      document.body.style.overflow = "";
+      isOpen = false;
+      const menu = document.getElementById('mobile-menu');
+      if (menu) {
+        menu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-8');
+        menu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      }
+    });
+  }
 </script>
