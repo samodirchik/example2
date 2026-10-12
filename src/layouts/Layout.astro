@@ -4,14 +4,21 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
-  lang?: 'ru' | 'ua';
+  description?: string;
+  lang?: string;
 }
 
-const { title, lang = 'ua' } = Astro.props;
+const { 
+  title, 
+  description = 'Professional pest control, disinsection, deratization, and disinfection services across Ukraine. 100% guarantee, certified European solutions.',
+  lang = 'en'
+} = Astro.props;
+
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang={lang === "ua" ? "uk" : lang}>
+<html lang="en">
   <head>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -25,7 +32,20 @@ const { title, lang = 'ua' } = Astro.props;
     <ClientRouter />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title}</title>
-    <meta name="description" content="Профессиональное уничтожение насекомых и грызунов. Гарантия качества и безопасности." />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={canonicalURL} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
 
     <!-- Google Fonts: Inter (Async) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
