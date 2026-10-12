@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Варианты отрисовки тараканов</title>
+  <title>Roach Drawing Variations</title>
   <style>
     body { 
       background-color: #f0f4f8; 
@@ -34,32 +34,32 @@
 <body>
 
 <div class="card">
-  <h3>Вариант 1: Точка</h3>
-  <p>Радиус 1.5px. Выглядит просто как пылинка/соринка.</p>
+  <h3>Option 1: Dot</h3>
+  <p>1.5px radius. Resembles a fine particle or speck.</p>
   <canvas id="c1" width="200" height="200"></canvas>
 </div>
 
 <div class="card">
-  <h3>Вариант 2: Базовый овал</h3>
-  <p>Без лапок. Размер 4x2px. Напоминает личинку.</p>
+  <h3>Option 2: Basic Oval</h3>
+  <p>Without legs. 4x2px size. Resembles a larva.</p>
   <canvas id="c2" width="200" height="200"></canvas>
 </div>
 
 <div class="card">
-  <h3>Вариант 3: "Кибер-таракан"</h3>
-  <p>Тот самый, с прямыми лапками и усиками (длина ~12px).</p>
+  <h3>Option 3: Cyber Roach</h3>
+  <p>Standard vector model with straight legs and antennae (~12px).</p>
   <canvas id="c3" width="200" height="200"></canvas>
 </div>
 
 <div class="card">
-  <h3>Вариант 4: Реалистичный силуэт</h3>
-  <p>Голова, тело, суставы на лапках. Размер ~20px.</p>
+  <h3>Option 4: Realistic Silhouette</h3>
+  <p>Head, body, jointed legs. ~20px dimension.</p>
   <canvas id="c4" width="200" height="200"></canvas>
 </div>
 
 <div class="card">
-  <h3>Вариант 5: Крупный жук</h3>
-  <p>Жирные линии, массивное тело. Хорошо заметен.</p>
+  <h3>Option 5: Large Beetle</h3>
+  <p>Thick outlines, substantial body. Highly visible.</p>
   <canvas id="c5" width="200" height="200"></canvas>
 </div>
 
@@ -68,7 +68,7 @@
     const canvas = document.getElementById(id);
     const ctx = canvas.getContext('2d');
     
-    // Рисуем сетку для масштаба
+    // Grid overlay for scale
     ctx.strokeStyle = 'rgba(0,0,0,0.05)';
     ctx.lineWidth = 1;
     for(let i=0; i<=200; i+=20) {
@@ -77,13 +77,13 @@
     }
 
     ctx.translate(100, 100);
-    // Рисуем 3 жуков под разными углами
+    // Draw 3 bugs at distinct angles
     for(let i=0; i<3; i++) {
       ctx.save();
       ctx.rotate((Math.PI * 2 / 3) * i);
       ctx.translate(0, -45);
       
-      // Поворачиваем чтобы смотрели по кругу
+      // Rotate facing inward
       ctx.rotate(Math.PI / 2);
       
       renderFn(ctx);
@@ -91,19 +91,19 @@
     }
   }
 
-  // 1. Точка
+  // 1. Dot
   draw('c1', (ctx) => {
     ctx.fillStyle = 'rgba(101, 67, 33, 1)';
     ctx.beginPath(); ctx.arc(0, 0, 1.5, 0, Math.PI*2); ctx.fill();
   });
 
-  // 2. Овал
+  // 2. Oval
   draw('c2', (ctx) => {
     ctx.fillStyle = 'rgba(101, 67, 33, 1)';
     ctx.beginPath(); ctx.ellipse(0, 0, 4, 2, 0, 0, Math.PI*2); ctx.fill();
   });
 
-  // 3. Кибер-таракан
+  // 3. Cyber Roach
   draw('c3', (ctx) => {
     ctx.strokeStyle = 'rgba(101, 67, 33, 1)';
     ctx.fillStyle = 'rgba(101, 67, 33, 1)';
@@ -118,38 +118,38 @@
     }
   });
 
-  // 4. Реалистичный
+  // 4. Realistic
   draw('c4', (ctx) => {
     ctx.strokeStyle = 'rgba(70, 40, 20, 1)';
     ctx.fillStyle = 'rgba(70, 40, 20, 1)';
     ctx.lineWidth = 1;
     
-    // Тело (брюшко, грудь)
+    // Body (abdomen, thorax)
     ctx.beginPath(); ctx.ellipse(-2, 0, 6, 4, 0, 0, Math.PI*2); ctx.fill(); 
     ctx.beginPath(); ctx.ellipse(4, 0, 3, 3.5, 0, 0, Math.PI*2); ctx.fill(); 
-    // Голова
+    // Head
     ctx.beginPath(); ctx.arc(7, 0, 1.5, 0, Math.PI*2); ctx.fill(); 
     
-    // Усы
+    // Antennae
     ctx.beginPath();
     ctx.moveTo(7, -1); ctx.quadraticCurveTo(12, -5, 18, -4);
     ctx.moveTo(7, 1); ctx.quadraticCurveTo(12, 5, 18, 4);
     ctx.stroke();
 
-    // Лапки с суставами
+    // Jointed legs
     ctx.lineWidth = 1;
-    // Передние
+    // Front
     ctx.beginPath(); ctx.moveTo(4, -3); ctx.lineTo(6, -6); ctx.lineTo(10, -8); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(4, 3); ctx.lineTo(6, 6); ctx.lineTo(10, 8); ctx.stroke();
-    // Средние
+    // Middle
     ctx.beginPath(); ctx.moveTo(2, -4); ctx.lineTo(1, -8); ctx.lineTo(3, -11); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(2, 4); ctx.lineTo(1, 8); ctx.lineTo(3, 11); ctx.stroke();
-    // Задние
+    // Hind
     ctx.beginPath(); ctx.moveTo(-2, -4); ctx.lineTo(-5, -9); ctx.lineTo(-2, -14); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(-2, 4); ctx.lineTo(-5, 9); ctx.lineTo(-2, 14); ctx.stroke();
   });
 
-  // 5. Крупный жук
+  // 5. Large Beetle
   draw('c5', (ctx) => {
     ctx.strokeStyle = 'rgba(50, 20, 10, 1)';
     ctx.fillStyle = 'rgba(50, 20, 10, 1)';
@@ -157,7 +157,7 @@
     
     ctx.beginPath(); ctx.ellipse(0, 0, 8, 5, 0, 0, Math.PI*2); ctx.fill(); 
     
-    // Толстые лапы
+    // Heavy legs
     ctx.beginPath(); ctx.moveTo(0, -4); ctx.lineTo(-4, -10); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(0, 4); ctx.lineTo(-4, 10); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(3, -4); ctx.lineTo(6, -10); ctx.stroke();

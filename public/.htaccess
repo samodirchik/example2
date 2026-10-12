@@ -7,6 +7,50 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
 
-# Astro custom error page routing (optional, if you have a 404.html)
+# -------------------------------------------------------------
+# 301 Permanent Redirects: Legacy RU / UA routes to English URLs
+# -------------------------------------------------------------
+
+# General Pages
+RewriteRule ^ru/?$ / [R=301,L]
+RewriteRule ^o-nac(-ru)?/?$ /about [R=301,L]
+RewriteRule ^kontakty-(ua|ru)/?$ /contacts [R=301,L]
+RewriteRule ^(prodazh-khimii-ua|prodazha-himii-ru)/?$ /chemical-products [R=301,L]
+
+# Deratization
+RewriteRule ^(deratyzaciya-ua/shchury-ta-myshi-ua|deratizaciya-ru/krysy-i-myshi-ru)/?$ /deratization/rats-and-mice [R=301,L]
+
+# Disinfection
+RewriteRule ^(dezinfekciya-ua/virusy-i-bakterii-ua|dezinfekciya-ru/virusy-i-bakterii-ru)/?$ /disinfection/viruses-and-bacteria [R=301,L]
+RewriteRule ^(dezinfekciya-ua/koronavirus-ua|dezinfekciya-ru/koronavirus-ru)/?$ /disinfection/coronavirus [R=301,L]
+RewriteRule ^(dezinfekciya-ua/plesen-i-gribok-ua|dezinfekciya-ru/plesen-i-gribok-ru)/?$ /disinfection/mold-and-mildew [R=301,L]
+RewriteRule ^(dezinfekciya-ua/gorysha-ta-pidvaly-ua|dezinfekciya-ru/cherdaki-i-podvaly-ru)/?$ /disinfection/attics-and-basements [R=301,L]
+
+# Disinsection
+RewriteRule ^(dezinsekciya-ua/klopy-ua|dezinsekciya-ru/klopy-ru)/?$ /disinsection/bed-bugs [R=301,L]
+RewriteRule ^(dezinsekciya-ua/tarakany-ua|dezinsekciya-ru/tarakany-ru)/?$ /disinsection/cockroaches [R=301,L]
+RewriteRule ^(dezinsekciya-ua/blohi-ua|dezinsekciya-ru/blohi-ru)/?$ /disinsection/fleas [R=301,L]
+RewriteRule ^(dezinsekciya-ua/kleshchi-ua|dezinsekciya-ru/kleshchi-ru)/?$ /disinsection/ticks [R=301,L]
+RewriteRule ^(dezinsekciya-ua/murahy-ua|dezinsekciya-ru/muravi-ru)/?$ /disinsection/ants [R=301,L]
+RewriteRule ^(dezinsekciya-ua/osy-ua|dezinsekciya-ru/osy-ru)/?$ /disinsection/wasps [R=301,L]
+RewriteRule ^(dezinsekciya-ua/mil-ua|dezinsekciya-ru/mol-ru)/?$ /disinsection/moths [R=301,L]
+RewriteRule ^(dezinsekciya-ua/koroidy-ua|dezinsekciya-ru/koroedy-ru)/?$ /disinsection/bark-beetles [R=301,L]
+RewriteRule ^(dezinsekciya-ua/sinoidy-ua|dezinsekciya-ru/senoedy-ru)/?$ /disinsection/booklice [R=301,L]
+RewriteRule ^(dezinsekciya-ua/shershni-ua|dezinsekciya-ru/shershni-ru)/?$ /disinsection/hornets [R=301,L]
+RewriteRule ^(dezinsekciya-ua/pavuky-ua|dezinsekciya-ru/pauki-ru)/?$ /disinsection/spiders [R=301,L]
+RewriteRule ^(dezinsekciya-ua/komari-ua|dezinsekciya-ru/komary-ru)/?$ /disinsection/mosquitoes [R=301,L]
+RewriteRule ^(dezinsekciya-ua/muhy-ua|dezinsekciya-ru/muhi-ru)/?$ /disinsection/flies [R=301,L]
+RewriteRule ^(dezinsekciya-ua/mokryci-ua|dezinsekciya-ru/mokricy-i-cheshujnicy-ru)/?$ /disinsection/woodlice [R=301,L]
+RewriteRule ^(dezinsekciya-ua/shkiroidy-ua|dezinsekciya-ru/kozheedy-ru)/?$ /disinsection/carpet-beetles [R=301,L]
+RewriteRule ^(dezinsekciya-ua/hlibni-tochilnyky-ua|dezinsekciya-ru/hlebnye-tochilshiki-ru)/?$ /disinsection/drugstore-beetles [R=301,L]
+RewriteRule ^(dezinsekciya-ua/moshky-ua|dezinsekciya-ru/moshki-ru)/?$ /disinsection/midges [R=301,L]
+RewriteRule ^(dezinsekciya-ua/termity-ua|dezinsekciya-ru/termity-ru)/?$ /disinsection/termites [R=301,L]
+RewriteRule ^(dezinsekciya-ua/skolopendry-ua|dezinsekciya-ru/skolopendry-ru)/?$ /disinsection/centipedes [R=301,L]
+RewriteRule ^(dezinsekciya-ua/slyzni-ua|dezinsekciya-ru/slizni-ru)/?$ /disinsection/slugs [R=301,L]
+
+# Catch-all legacy RU prefix
+RewriteRule ^ru/(.*)$ /$1 [R=301,L]
+
+# Astro custom error page routing
 ErrorDocument 404 /404.html
 </IfModule>

@@ -2,7 +2,7 @@
 import { targetAudienceData } from '../../i18n/data';
 
 interface Props {
-  lang?: 'ru' | 'ua';
+  lang?: string;
 }
 const { lang = 'en' } = Astro.props;
 const data = targetAudienceData.en;
@@ -11,7 +11,7 @@ const data = targetAudienceData.en;
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16 animate-fade-in-up">
       <h2 class="text-4xl md:text-5xl font-bold mb-4 text-[var(--color-text-main)]" style="font-family: var(--font-heading)">
-        {lang === 'ua' ? 'Для кого наші послуги' : 'Для кого наши услуги'}
+        Who Our Services Are For
       </h2>
       <div class="w-24 h-1 bg-[var(--color-accent-primary)] mx-auto rounded-full"></div>
     </div>

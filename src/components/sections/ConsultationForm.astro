@@ -52,7 +52,7 @@ const t = useTranslations(lang);
           <input type="hidden" name="current_url" value={routes.home} />
           
           <div class="relative">
-            <input type="text" name="name" placeholder={lang === 'ua' ? "Ваше ім'я (необов'язково)" : "Ваше имя (необязательно)"} class="w-full px-6 py-5 rounded-2xl bg-white border-2 border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.3)] focus:outline-none focus:ring-4 focus:ring-blue-300 focus:border-blue-500 transition-all text-[var(--color-text-main)] placeholder-[var(--color-text-muted)] font-bold text-xl text-center" />
+            <input type="text" name="name" placeholder="Your Name (optional)" class="w-full px-6 py-5 rounded-2xl bg-white border-2 border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.3)] focus:outline-none focus:ring-4 focus:ring-blue-300 focus:border-blue-500 transition-all text-[var(--color-text-main)] placeholder-[var(--color-text-muted)] font-bold text-xl text-center" />
           </div>
 
           <div class="relative">
@@ -79,11 +79,11 @@ const t = useTranslations(lang);
       <svg class="w-12 h-12 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
     </div>
     
-    <h3 id="modal-title" class="text-3xl font-black text-[var(--color-text-main)] mb-4" style="font-family: var(--font-heading)">Успешно!</h3>
-    <p id="modal-desc" class="text-[var(--color-text-muted)] text-lg mb-8 leading-relaxed">Ваша заявка успешно отправлена! Менеджер свяжется с вами в ближайшее время.</p>
+    <h3 id="modal-title" class="text-3xl font-black text-[var(--color-text-main)] mb-4" style="font-family: var(--font-heading)">Success!</h3>
+    <p id="modal-desc" class="text-[var(--color-text-muted)] text-lg mb-8 leading-relaxed">Your request has been submitted successfully! Our manager will contact you shortly.</p>
     
     <button id="modal-close-btn" class="w-full relative px-8 py-4 bg-gradient-to-r from-[var(--color-accent-primary)] to-[var(--color-accent-dark)] text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-95 transition-all duration-300">
-      Отлично
+      Great
     </button>
   </div>
 </div>
@@ -136,18 +136,16 @@ const t = useTranslations(lang);
         
         const phoneInput = form.querySelector('input[name="tel"]');
         const phoneVal = phoneInput.value;
-        const currentUrl = form.querySelector('input[name="current_url"]')?.value || '/';
-        const isRu = currentUrl.includes('/ru');
         
         // --- Validation ---
         if (phoneVal.length !== 13) {
-          alert(isRu ? 'Пожалуйста, введите полный номер телефона (13 символов): +380XXXXXXXXX' : 'Будь ласка, введіть повний номер телефону (13 символів): +380XXXXXXXXX');
+          alert('Please enter a complete phone number (+380XXXXXXXXX)');
           return;
         }
         
         const operatorCode = phoneVal.substring(4, 6);
         if (!validOperators.includes(operatorCode)) {
-          alert(isRu ? 'Введен неверный код мобильного оператора Украины.' : 'Введено невірний код мобільного оператора України.');
+          alert('Invalid Ukrainian mobile operator code entered.');
           return;
         }
 
@@ -156,7 +154,7 @@ const t = useTranslations(lang);
         const now = Date.now();
         // 60 seconds cooldown
         if (lastSubmit && (now - parseInt(lastSubmit)) < 60000) {
-          alert(isRu ? 'Вы уже недавно отправляли заявку. Пожалуйста, подождите минуту перед следующей отправкой.' : 'Ви вже нещодавно відправляли заявку. Будь ласка, зачекайте хвилину перед наступною відправкою.');
+          alert('You recently submitted a request. Please wait a minute before submitting again.');
           return;
         }
         
@@ -166,7 +164,7 @@ const t = useTranslations(lang);
         // Disable button to prevent double submission
         submitBtn.style.pointerEvents = 'none';
         submitBtn.style.opacity = '0.7';
-        submitBtn.innerHTML = isRu ? 'Отправка...' : 'Відправлення...';
+        submitBtn.innerHTML = 'Submitting...';
         
         try {
           const formData = new FormData(form);
@@ -196,11 +194,9 @@ const t = useTranslations(lang);
 
           // Setup and show modal
           if (modal && modalContent && modalTitle && modalDesc && modalBtn) {
-            modalTitle.textContent = isRu ? 'Успешно!' : 'Успішно!';
-            modalDesc.textContent = isRu 
-              ? 'Ваша заявка успешно отправлена! Менеджер свяжется с вами в ближайшее время.' 
-              : 'Заявку успішно відправлено! Менеджер зв\'яжеться з вами найближчим часом.';
-            modalBtn.textContent = isRu ? 'Отлично' : 'Чудово';
+            modalTitle.textContent = 'Success!';
+            modalDesc.textContent = 'Your request has been submitted successfully! Our manager will contact you shortly.';
+            modalBtn.textContent = 'Great';
             
             modal.classList.remove('opacity-0', 'pointer-events-none');
             modalContent.classList.remove('scale-90', 'translate-y-8');
@@ -213,17 +209,13 @@ const t = useTranslations(lang);
             modalBtn.onclick = closeAndRedirect;
           } else {
             // Fallback
-            alert(isRu ? 'Заявка успешно отправлена!' : 'Заявку успішно відправлено!');
+            alert('Request submitted successfully!');
             window.location.href = '/';
           }
           
         } catch (error) {
           console.error('Error submitting form:', error);
-          const errorMsg = isRu 
-            ? 'Произошла ошибка при отправке. Пожалуйста, позвоните нам по телефону.' 
-            : 'Сталася помилка при відправленні. Будь ласка, зателефонуйте нам.';
-          
-          alert(errorMsg);
+          alert('An error occurred while submitting your request. Please call us directly.');
           
           // Restore button
           submitBtn.style.pointerEvents = 'auto';
