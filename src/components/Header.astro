@@ -4,57 +4,10 @@ import { useTranslations } from '../i18n/ui';
 import { routes } from '../i18n/routes';
 
 interface Props {
-  lang?: 'ru' | 'ua' | 'en';
+  lang?: string;
 }
 const { lang = 'en' } = Astro.props;
-const t = useTranslations(lang);
-
-const currentPath = Astro.url.pathname;
-const normalizedPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
-
-const routeMap: Record<string, string> = {
-  '/': '/ru',
-  '/o-nac': '/o-nac-ru',
-  '/prodazh-khimii-ua': '/prodazha-himii-ru',
-  '/kontakty-ua': '/kontakty-ru',
-  '/dezinsekciya-ua/klopy-ua': '/dezinsekciya-ru/klopy-ru',
-  '/dezinsekciya-ua/tarakany-ua': '/dezinsekciya-ru/tarakany-ru',
-  '/dezinsekciya-ua/blohi-ua': '/dezinsekciya-ru/blohi-ru',
-  '/dezinsekciya-ua/kleshchi-ua': '/dezinsekciya-ru/kleshchi-ru',
-  '/dezinsekciya-ua/murahy-ua': '/dezinsekciya-ru/muravi-ru',
-  '/dezinsekciya-ua/osy-ua': '/dezinsekciya-ru/osy-ru',
-  '/dezinsekciya-ua/mil-ua': '/dezinsekciya-ru/mol-ru',
-  '/dezinsekciya-ua/koroidy-ua': '/dezinsekciya-ru/koroedy-ru',
-  '/dezinsekciya-ua/sinoidy-ua': '/dezinsekciya-ru/senoedy-ru',
-  '/dezinsekciya-ua/shershni-ua': '/dezinsekciya-ru/shershni-ru',
-  '/dezinsekciya-ua/pavuky-ua': '/dezinsekciya-ru/pauki-ru',
-  '/dezinsekciya-ua/komari-ua': '/dezinsekciya-ru/komary-ru',
-  '/dezinsekciya-ua/muhy-ua': '/dezinsekciya-ru/muhi-ru',
-  '/dezinsekciya-ua/mokryci-ua': '/dezinsekciya-ru/mokricy-i-cheshujnicy-ru',
-  '/dezinsekciya-ua/shkiroidy-ua': '/dezinsekciya-ru/kozheedy-ru',
-  '/dezinsekciya-ua/hlibni-tochilnyky-ua': '/dezinsekciya-ru/hlebnye-tochilshiki-ru',
-  '/dezinsekciya-ua/moshky-ua': '/dezinsekciya-ru/moshki-ru',
-  '/dezinsekciya-ua/termity-ua': '/dezinsekciya-ru/termity-ru',
-  '/dezinsekciya-ua/skolopendry-ua': '/dezinsekciya-ru/skolopendry-ru',
-  '/dezinsekciya-ua/slyzni-ua': '/dezinsekciya-ru/slizni-ru',
-  '/deratyzaciya-ua/shchury-ta-myshi-ua': '/deratizaciya-ru/krysy-i-myshi-ru',
-  '/dezinfekciya-ua/virusy-i-bakterii-ua': '/dezinfekciya-ru/virusy-i-bakterii-ru',
-  '/dezinfekciya-ua/koronavirus-ua': '/dezinfekciya-ru/koronavirus-ru',
-  '/dezinfekciya-ua/plesen-i-gribok-ua': '/dezinfekciya-ru/plesen-i-gribok-ru',
-  '/dezinfekciya-ua/gorysha-ta-pidvaly-ua': '/dezinfekciya-ru/cherdaki-i-podvaly-ru'
-};
-
-let ruLink = '/ru';
-let uaLink = '/';
-
-if (lang === 'ua') {
-  ruLink = routeMap[normalizedPath] || '/ru';
-  uaLink = normalizedPath;
-} else {
-  const foundUa = Object.keys(routeMap).find(key => routeMap[key] === normalizedPath);
-  uaLink = foundUa || '/';
-  ruLink = normalizedPath;
-}
+const t = useTranslations('en');
 ---
 
 <header class="fixed top-0 w-full z-50 p-2 sm:p-4 lg:p-6 pointer-events-none">
@@ -142,13 +95,6 @@ if (lang === 'ua') {
 
     <!-- Contacts block -->
     <div class="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0 ml-2 xl:ml-4">
-      
-      <!-- Language Switcher Desktop -->
-      <div class="flex items-center gap-2 mr-1 xl:mr-2">
-        <a href={ruLink} class={`text-sm font-bold ${lang === 'ru' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>RU</a>
-        <span class="text-gray-300 text-xs">|</span>
-        <a href={uaLink} class={`text-sm font-bold ${lang === 'ua' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>UA</a>
-      </div>
 
       <div class="flex flex-col items-end">
         <a href="tel:+380956602238" class="text-sm font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] transition-colors leading-tight">+ 38 (095) 660 22 38</a>
@@ -199,13 +145,6 @@ if (lang === 'ua') {
   <div id="mobile-menu" class="fixed inset-0 top-[88px] bg-[rgba(248,250,252,0.98)] backdrop-blur-3xl z-40 opacity-0 pointer-events-none transition-all duration-400 ease-[var(--ease-spring)] transform -translate-y-8 flex flex-col p-6 lg:hidden border-t border-[rgba(255,255,255,0.4)] shadow-[0_30px_60px_rgba(0,0,0,0.1)] h-[calc(100vh-88px)] overflow-y-auto">
     
     <div class="flex flex-col gap-4">
-      
-      <!-- Language Switcher Mobile -->
-      <div class="flex justify-center items-center gap-4 mb-2 pb-4 border-b border-[rgba(0,0,0,0.05)]">
-        <a href={ruLink} class={`text-base font-bold ${lang === 'ru' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>RU</a>
-        <span class="text-gray-300 text-sm">|</span>
-        <a href={uaLink} class={`text-base font-bold ${lang === 'ua' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>UA</a>
-      </div>
 
       <a href={routes.home} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.home')}</a>
       <a href={routes.about} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.about')}</a>
