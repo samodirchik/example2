@@ -5,8 +5,8 @@ import { pricingData } from '../../i18n/data';
 interface Props {
   lang?: 'ru' | 'ua';
 }
-const { lang = 'ua' } = Astro.props;
-const data = pricingData[lang];
+const { lang = 'en' } = Astro.props;
+const data = pricingData.en;
 ---
 <section class="relative py-24 px-6 z-10 overflow-hidden">
   <style>

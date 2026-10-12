@@ -4,8 +4,8 @@ import { faqData } from '../../i18n/faqData';
 interface Props {
   lang?: 'ru' | 'ua';
 }
-const { lang = 'ua' } = Astro.props;
-const data = faqData[lang];
+const { lang = 'en' } = Astro.props;
+const data = faqData.en;
 ---
 <section class="relative py-24 px-6 z-10 bg-gradient-to-b from-transparent to-white/5">
   <div class="max-w-4xl mx-auto">

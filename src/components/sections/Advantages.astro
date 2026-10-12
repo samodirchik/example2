@@ -4,8 +4,8 @@ import { advantagesData } from '../../i18n/data_extended';
 interface Props {
   lang?: 'ru' | 'ua';
 }
-const { lang = 'ua' } = Astro.props;
-const data = advantagesData[lang];
+const { lang = 'en' } = Astro.props;
+const data = advantagesData.en;
 ---
 <section class="relative py-24 px-6 z-10">
   <div class="max-w-7xl mx-auto">
