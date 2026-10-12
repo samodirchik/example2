@@ -1,11 +1,12 @@
 ---
 import Button from './Button.astro';
 import { useTranslations } from '../i18n/ui';
+import { routes } from '../i18n/routes';
 
 interface Props {
-  lang?: 'ru' | 'ua';
+  lang?: 'ru' | 'ua' | 'en';
 }
-const { lang = 'ua' } = Astro.props;
+const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 
 const currentPath = Astro.url.pathname;
@@ -61,7 +62,7 @@ if (lang === 'ua') {
     
     <!-- Logo & Subtitle -->
     <div class="flex flex-col flex-shrink-0 mr-2 sm:mr-4">
-      <a href={lang === 'ru' ? '/ru' : '/'} class="text-lg sm:text-2xl font-bold tracking-tighter hover:text-[var(--color-accent-primary)] transition-colors" style="font-family: var(--font-heading)">CUCARACHA</a>
+      <a href={routes.home} class="text-lg sm:text-2xl font-bold tracking-tighter hover:text-[var(--color-accent-primary)] transition-colors" style="font-family: var(--font-heading)">CUCARACHA</a>
       <div class="text-[9px] uppercase tracking-wider text-[var(--color-text-muted)] max-w-[200px] leading-tight mt-1 hidden xl:block">
         {t('header.subtitle')}
       </div>
@@ -69,8 +70,8 @@ if (lang === 'ua') {
 
     <!-- Navigation -->
     <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-6 text-sm font-medium text-[var(--color-text-main)] whitespace-nowrap">
-      <a href={lang === 'ru' ? '/ru' : '/'} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.home')}</a>
-      <a href={lang === 'ru' ? '/o-nac-ru' : '/o-nac'} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.about')}</a>
+      <a href={routes.home} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.home')}</a>
+      <a href={routes.about} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.about')}</a>
       
       <!-- Mega Menu: Дезинсекция -->
       <div class="relative group">
@@ -81,30 +82,30 @@ if (lang === 'ua') {
         
         <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[600px] bg-white/95 backdrop-blur-2xl border border-white/50 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl p-6 grid grid-cols-3 gap-6">
           <ul class="flex flex-col gap-2">
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/klopy-ru' : '/dezinsekciya-ua/klopy-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.bugs')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/tarakany-ru' : '/dezinsekciya-ua/tarakany-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.roaches')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/blohi-ru' : '/dezinsekciya-ua/blohi-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.fleas')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/kleshchi-ru' : '/dezinsekciya-ua/kleshchi-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.ticks')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/muravi-ru' : '/dezinsekciya-ua/murahy-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.ants')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/osy-ru' : '/dezinsekciya-ua/osy-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.wasps')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/mol-ru' : '/dezinsekciya-ua/mil-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.moths')}</a></li>
+            <li><a href={routes.disinsection.bugs} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.bugs')}</a></li>
+            <li><a href={routes.disinsection.roaches} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.roaches')}</a></li>
+            <li><a href={routes.disinsection.fleas} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.fleas')}</a></li>
+            <li><a href={routes.disinsection.ticks} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.ticks')}</a></li>
+            <li><a href={routes.disinsection.ants} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.ants')}</a></li>
+            <li><a href={routes.disinsection.wasps} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.wasps')}</a></li>
+            <li><a href={routes.disinsection.moths} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.moths')}</a></li>
           </ul>
           <ul class="flex flex-col gap-2">
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/koroedy-ru' : '/dezinsekciya-ua/koroidy-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.bark_beetles')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/senoedy-ru' : '/dezinsekciya-ua/sinoidy-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.booklice')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/shershni-ru' : '/dezinsekciya-ua/shershni-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.hornets')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/pauki-ru' : '/dezinsekciya-ua/pavuky-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.spiders')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/komary-ru' : '/dezinsekciya-ua/komari-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.mosquitoes')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/muhi-ru' : '/dezinsekciya-ua/muhy-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.flies')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/mokricy-i-cheshujnicy-ru' : '/dezinsekciya-ua/mokryci-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.woodlice')}</a></li>
+            <li><a href={routes.disinsection.bark_beetles} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.bark_beetles')}</a></li>
+            <li><a href={routes.disinsection.booklice} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.booklice')}</a></li>
+            <li><a href={routes.disinsection.hornets} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.hornets')}</a></li>
+            <li><a href={routes.disinsection.spiders} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.spiders')}</a></li>
+            <li><a href={routes.disinsection.mosquitoes} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.mosquitoes')}</a></li>
+            <li><a href={routes.disinsection.flies} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.flies')}</a></li>
+            <li><a href={routes.disinsection.woodlice} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.woodlice')}</a></li>
           </ul>
           <ul class="flex flex-col gap-2">
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/kozheedy-ru' : '/dezinsekciya-ua/shkiroidy-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.carpet_beetles')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/hlebnye-tochilshiki-ru' : '/dezinsekciya-ua/hlibni-tochilnyky-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.biscuit_beetles')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/moshki-ru' : '/dezinsekciya-ua/moshky-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.midges')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/termity-ru' : '/dezinsekciya-ua/termity-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.termites')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/skolopendry-ru' : '/dezinsekciya-ua/skolopendry-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.centipedes')}</a></li>
-            <li><a href={lang === 'ru' ? '/dezinsekciya-ru/slizni-ru' : '/dezinsekciya-ua/slyzni-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.slugs')}</a></li>
+            <li><a href={routes.disinsection.carpet_beetles} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.carpet_beetles')}</a></li>
+            <li><a href={routes.disinsection.biscuit_beetles} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.biscuit_beetles')}</a></li>
+            <li><a href={routes.disinsection.midges} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.midges')}</a></li>
+            <li><a href={routes.disinsection.termites} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.termites')}</a></li>
+            <li><a href={routes.disinsection.centipedes} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.centipedes')}</a></li>
+            <li><a href={routes.disinsection.slugs} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] transition-colors block p-1">{t('srv.slugs')}</a></li>
           </ul>
         </div>
       </div>
@@ -116,11 +117,11 @@ if (lang === 'ua') {
           <svg class="w-3 h-3 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </a>
         <div class="absolute top-full left-0 mt-2 w-48 bg-white/95 backdrop-blur-2xl border border-white/50 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl p-4 flex flex-col gap-2">
-          <a href={lang === 'ru' ? '/deratizaciya-ru/krysy-i-myshi-ru' : '/deratyzaciya-ua/shchury-ta-myshi-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.rats_mice')}</a>
+          <a href={routes.deratization.rats_mice} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.rats_mice')}</a>
         </div>
       </div>
 
-      <a href={lang === 'ru' ? '/prodazha-himii-ru' : '/prodazh-khimii-ua'} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.shop')}</a>
+      <a href={routes.shop} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.shop')}</a>
 
       <!-- Dropdown: Дезинфекция -->
       <div class="relative group">
@@ -129,14 +130,14 @@ if (lang === 'ua') {
           <svg class="w-3 h-3 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </a>
         <div class="absolute top-full left-0 mt-2 w-56 bg-white/95 backdrop-blur-2xl border border-white/50 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-2xl p-4 flex flex-col gap-2">
-          <a href={lang === 'ru' ? '/dezinfekciya-ru/virusy-i-bakterii-ru' : '/dezinfekciya-ua/virusy-i-bakterii-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.viruses')}</a>
-          <a href={lang === 'ru' ? '/dezinfekciya-ru/koronavirus-ru' : '/dezinfekciya-ua/koronavirus-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.corona')}</a>
-          <a href={lang === 'ru' ? '/dezinfekciya-ru/plesen-i-gribok-ru' : '/dezinfekciya-ua/plesen-i-gribok-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.mold')}</a>
-          <a href={lang === 'ru' ? '/dezinfekciya-ru/cherdaki-i-podvaly-ru' : '/dezinfekciya-ua/gorysha-ta-pidvaly-ua'} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.attics')}</a>
+          <a href={routes.disinfection.viruses} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.viruses')}</a>
+          <a href={routes.disinfection.corona} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.corona')}</a>
+          <a href={routes.disinfection.mold} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.mold')}</a>
+          <a href={routes.disinfection.attics} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] p-1">{t('srv.attics')}</a>
         </div>
       </div>
 
-      <a href={lang === 'ru' ? '/kontakty-ru' : '/kontakty-ua'} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.contacts')}</a>
+      <a href={routes.contacts} class="hover:text-[var(--color-accent-primary)] transition-colors">{t('nav.contacts')}</a>
     </nav>
 
     <!-- Contacts block -->
@@ -206,8 +207,8 @@ if (lang === 'ua') {
         <a href={uaLink} class={`text-base font-bold ${lang === 'ua' ? 'text-[var(--color-accent-primary)] border-b-2 border-[var(--color-accent-primary)]' : 'text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)]'} transition-colors pb-0.5`}>UA</a>
       </div>
 
-      <a href={lang === 'ru' ? '/ru' : '/'} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.home')}</a>
-      <a href={lang === 'ru' ? '/o-nac-ru' : '/o-nac'} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.about')}</a>
+      <a href={routes.home} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.home')}</a>
+      <a href={routes.about} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.about')}</a>
       
       <div class="text-[9px] text-[var(--color-accent-primary)] font-black uppercase tracking-[0.2em] mt-1 border-b border-[rgba(0,0,0,0.05)] pb-1">{t('nav.services')}</div>
       <div class="mobile-dropdown">
@@ -220,26 +221,26 @@ if (lang === 'ua') {
           </button>
         </div>
         <div class="dropdown-content hidden flex-col pl-4 mt-2 space-y-3 pb-2 border-l-2 border-gray-100 ml-2">
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/klopy-ru' : '/dezinsekciya-ua/klopy-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.bugs')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/tarakany-ru' : '/dezinsekciya-ua/tarakany-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.roaches')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/blohi-ru' : '/dezinsekciya-ua/blohi-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.fleas')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/kleshchi-ru' : '/dezinsekciya-ua/kleshchi-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.ticks')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/muravi-ru' : '/dezinsekciya-ua/murahy-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.ants')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/osy-ru' : '/dezinsekciya-ua/osy-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.wasps')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/mol-ru' : '/dezinsekciya-ua/mil-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.moths')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/koroedy-ru' : '/dezinsekciya-ua/koroidy-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.bark_beetles')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/senoedy-ru' : '/dezinsekciya-ua/sinoidy-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.booklice')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/shershni-ru' : '/dezinsekciya-ua/shershni-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.hornets')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/pauki-ru' : '/dezinsekciya-ua/pavuky-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.spiders')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/komary-ru' : '/dezinsekciya-ua/komari-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.mosquitoes')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/muhi-ru' : '/dezinsekciya-ua/muhy-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.flies')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/mokricy-i-cheshujnicy-ru' : '/dezinsekciya-ua/mokryci-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.woodlice')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/kozheedy-ru' : '/dezinsekciya-ua/shkiroidy-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.carpet_beetles')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/hlebnye-tochilshiki-ru' : '/dezinsekciya-ua/hlibni-tochilnyky-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.biscuit_beetles')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/moshki-ru' : '/dezinsekciya-ua/moshky-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.midges')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/termity-ru' : '/dezinsekciya-ua/termity-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.termites')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/skolopendry-ru' : '/dezinsekciya-ua/skolopendry-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.centipedes')}</a>
-          <a href={lang === 'ru' ? '/dezinsekciya-ru/slizni-ru' : '/dezinsekciya-ua/slyzni-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.slugs')}</a>
+          <a href={routes.disinsection.bugs} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.bugs')}</a>
+          <a href={routes.disinsection.roaches} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.roaches')}</a>
+          <a href={routes.disinsection.fleas} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.fleas')}</a>
+          <a href={routes.disinsection.ticks} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.ticks')}</a>
+          <a href={routes.disinsection.ants} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.ants')}</a>
+          <a href={routes.disinsection.wasps} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.wasps')}</a>
+          <a href={routes.disinsection.moths} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.moths')}</a>
+          <a href={routes.disinsection.bark_beetles} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.bark_beetles')}</a>
+          <a href={routes.disinsection.booklice} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.booklice')}</a>
+          <a href={routes.disinsection.hornets} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.hornets')}</a>
+          <a href={routes.disinsection.spiders} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.spiders')}</a>
+          <a href={routes.disinsection.mosquitoes} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.mosquitoes')}</a>
+          <a href={routes.disinsection.flies} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.flies')}</a>
+          <a href={routes.disinsection.woodlice} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.woodlice')}</a>
+          <a href={routes.disinsection.carpet_beetles} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.carpet_beetles')}</a>
+          <a href={routes.disinsection.biscuit_beetles} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.biscuit_beetles')}</a>
+          <a href={routes.disinsection.midges} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.midges')}</a>
+          <a href={routes.disinsection.termites} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.termites')}</a>
+          <a href={routes.disinsection.centipedes} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.centipedes')}</a>
+          <a href={routes.disinsection.slugs} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.slugs')}</a>
         </div>
       </div>
 
@@ -253,7 +254,7 @@ if (lang === 'ua') {
           </button>
         </div>
         <div class="dropdown-content hidden flex-col pl-4 mt-2 space-y-3 pb-2 border-l-2 border-gray-100 ml-2">
-          <a href={lang === 'ru' ? '/deratizaciya-ru/krysy-i-myshi-ru' : '/deratyzaciya-ua/shchury-ta-myshi-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.rats_mice')}</a>
+          <a href={routes.deratization.rats_mice} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.rats_mice')}</a>
         </div>
       </div>
 
@@ -267,18 +268,18 @@ if (lang === 'ua') {
           </button>
         </div>
         <div class="dropdown-content hidden flex-col pl-4 mt-2 space-y-3 pb-2 border-l-2 border-gray-100 ml-2">
-          <a href={lang === 'ru' ? '/dezinfekciya-ru/virusy-i-bakterii-ru' : '/dezinfekciya-ua/virusy-i-bakterii-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.viruses')}</a>
-          <a href={lang === 'ru' ? '/dezinfekciya-ru/koronavirus-ru' : '/dezinfekciya-ua/koronavirus-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.corona')}</a>
-          <a href={lang === 'ru' ? '/dezinfekciya-ru/plesen-i-gribok-ru' : '/dezinfekciya-ua/plesen-i-gribok-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.mold')}</a>
-          <a href={lang === 'ru' ? '/dezinfekciya-ru/cherdaki-i-podvaly-ru' : '/dezinfekciya-ua/gorysha-ta-pidvaly-ua'} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.attics')}</a>
+          <a href={routes.disinfection.viruses} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.viruses')}</a>
+          <a href={routes.disinfection.corona} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.corona')}</a>
+          <a href={routes.disinfection.mold} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.mold')}</a>
+          <a href={routes.disinfection.attics} class="text-[17px] text-[var(--color-text-muted)] hover:text-[var(--color-accent-primary)] mobile-link block">{t('srv.attics')}</a>
         </div>
       </div>
       
-      <div class="text-[9px] text-[var(--color-accent-primary)] font-black uppercase tracking-[0.2em] mt-1 border-b border-[rgba(0,0,0,0.05)] pb-1">Магазин</div>
-      <a href={lang === 'ru' ? '/prodazha-himii-ru' : '/prodazh-khimii-ua'} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.shop')}</a>
+      <div class="text-[9px] text-[var(--color-accent-primary)] font-black uppercase tracking-[0.2em] mt-1 border-b border-[rgba(0,0,0,0.05)] pb-1">{t('nav.shop')}</div>
+      <a href={routes.shop} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.shop')}</a>
       
-      <div class="text-[9px] text-[var(--color-accent-primary)] font-black uppercase tracking-[0.2em] mt-1 border-b border-[rgba(0,0,0,0.05)] pb-1">Информация</div>
-      <a href={lang === 'ru' ? '/kontakty-ru' : '/kontakty-ua'} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.contacts')}</a>
+      <div class="text-[9px] text-[var(--color-accent-primary)] font-black uppercase tracking-[0.2em] mt-1 border-b border-[rgba(0,0,0,0.05)] pb-1">{t('nav.contacts')}</div>
+      <a href={routes.contacts} class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] mobile-link transition-colors" style="font-family: var(--font-heading)">{t('nav.contacts')}</a>
     </div>
 
     <div class="mt-auto pt-6 pb-8 flex flex-col gap-3">

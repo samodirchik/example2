@@ -1,11 +1,12 @@
 ---
 import { useTranslations } from '../../i18n/ui';
+import { routes } from '../../i18n/routes';
 
 interface Props {
-  lang?: 'ru' | 'ua';
+  lang?: 'ru' | 'ua' | 'en';
   compact?: boolean;
 }
-const { lang = 'ua', compact = false } = Astro.props;
+const { lang = 'en', compact = false } = Astro.props;
 const t = useTranslations(lang);
 ---
 <section class={`relative z-10 ${compact ? 'w-full' : 'py-24 px-4 sm:px-6'}`} id="consultation-form">
@@ -48,7 +49,7 @@ const t = useTranslations(lang);
 
         <form action="/telegram.php" method="post" class="space-y-6">
           <input type="hidden" name="type" value="zamer2" />
-          <input type="hidden" name="current_url" value={lang === 'ru' ? '/ru/' : '/'} />
+          <input type="hidden" name="current_url" value={routes.home} />
           
           <div class="relative">
             <input type="text" name="name" placeholder={lang === 'ua' ? "Ваше ім'я (необов'язково)" : "Ваше имя (необязательно)"} class="w-full px-6 py-5 rounded-2xl bg-white border-2 border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.3)] focus:outline-none focus:ring-4 focus:ring-blue-300 focus:border-blue-500 transition-all text-[var(--color-text-main)] placeholder-[var(--color-text-muted)] font-bold text-xl text-center" />
@@ -206,14 +207,14 @@ const t = useTranslations(lang);
             modalContent.classList.add('scale-100', 'translate-y-0');
             
             const closeAndRedirect = () => {
-              window.location.href = isRu ? '/ru' : '/';
+              window.location.href = '/';
             };
             
             modalBtn.onclick = closeAndRedirect;
           } else {
             // Fallback
             alert(isRu ? 'Заявка успешно отправлена!' : 'Заявку успішно відправлено!');
-            window.location.href = isRu ? '/ru' : '/';
+            window.location.href = '/';
           }
           
         } catch (error) {

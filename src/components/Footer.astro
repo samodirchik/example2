@@ -1,10 +1,11 @@
 ---
 import { useTranslations } from '../i18n/ui';
+import { routes } from '../i18n/routes';
 
 interface Props {
-  lang?: 'ru' | 'ua';
+  lang?: 'ru' | 'ua' | 'en';
 }
-const { lang = 'ua' } = Astro.props;
+const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 ---
 <footer class="glass-panel mt-12 py-4 lg:py-6 relative z-10 border-t border-[rgba(255,255,255,0.4)]">
@@ -13,7 +14,7 @@ const t = useTranslations(lang);
       
       <!-- Logo and Description -->
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
-        <a href={lang === 'ru' ? '/ru' : '/'} class="text-2xl font-bold tracking-tighter hover:text-[var(--color-accent-primary)] transition-colors" style="font-family: var(--font-heading)">CUCARACHA</a>
+        <a href={routes.home} class="text-2xl font-bold tracking-tighter hover:text-[var(--color-accent-primary)] transition-colors" style="font-family: var(--font-heading)">CUCARACHA</a>
         <div class="text-[10px] text-[var(--color-text-muted)] uppercase tracking-widest mt-2 max-w-xs">
           {t('footer.desc')}
         </div>
@@ -31,7 +32,6 @@ const t = useTranslations(lang);
         <!-- Copyright -->
         <div class="text-[10px] text-[var(--color-text-muted)] flex flex-col items-center lg:items-end gap-1">
           <span>&copy; {new Date().getFullYear()} CUCARACHA. {t('footer.rights')}</span>
-
         </div>
         
       </div>
