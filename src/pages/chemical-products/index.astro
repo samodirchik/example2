@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ParticleBackground from '../../components/ParticleBackground.astro';
+import ConsultationForm from '../../components/sections/ConsultationForm.astro';
+---
+
+<Layout title="Professional Chemical Products - Cucaracha" description="Buy certified professional pest control concentrates and chemicals for insect and rodent extermination. 12-month quality guarantee.">
+  <ParticleBackground />
+  <Header />
+  <main class="pt-36 relative z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <!-- Text Content -->
+        <div class="text-center lg:text-left animate-fade-in-up flex flex-col items-center lg:items-start">
+          <div class="mb-4 inline-flex items-center justify-center px-4 py-2 rounded-full glass-panel text-sm font-semibold text-[var(--color-text-main)] shadow-sm self-center lg:self-start">
+            <span class="w-2 h-2 rounded-full bg-[var(--color-accent-primary)] animate-pulse mr-2"></span>
+            Special Offer!
+          </div>
+          
+          <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight tracking-tighter" style="font-family: var(--font-heading)">
+            #1 Products against <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent-primary)] to-[#00d2ff]">
+              Insects & Rodents
+            </span>
+          </h1>
+          
+          <ul class="text-base md:text-lg text-[var(--color-text-main)] font-bold mb-10 space-y-4 max-w-xl text-left inline-block">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Professional products for pest and rodent control — 12-month guarantee!
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Proprietary concentrated formulations
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Odorless, stainless, and non-marking
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Safe for people and pets
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Easy self-application
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-[var(--color-accent-primary)] mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              24/7 Expert instructions & consultation
+            </li>
+          </ul>
+
+          <div class="mb-10 inline-block relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-400 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+            <div class="relative px-8 py-4 bg-red-600 rounded-lg leading-none flex items-center hover-spring shadow-2xl">
+              <span class="flex items-center space-x-2 text-white font-bold text-2xl tracking-widest uppercase" style="font-family: var(--font-heading)">
+                <svg class="w-8 h-8 text-white mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                Mr.Cucaracha
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Consultation Form -->
+        <div class="flex justify-center items-center relative animate-fade-in-up" style="animation-delay: 0.3s">
+          <div class="w-full max-w-lg">
+            <ConsultationForm compact={true} />
+          </div>
+        </div>
+      </div>
+      <h2 class="text-3xl font-bold text-center text-[var(--color-text-main)] mb-12" style="font-family: var(--font-heading)">Buy Treatments For:</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-16">
+        
+        <!-- Cockroaches -->
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/cockroach-копия.png" alt="Cockroaches" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Cockroaches</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 UAH</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">UAH</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Order</a>
+        </div>
+
+        <!-- Bed Bugs -->
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/bed-bug.png" alt="Bed Bugs" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Bed Bugs</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 UAH</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">UAH</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Order</a>
+        </div>
+
+        <!-- Fleas -->
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/flea-копия.png" alt="Fleas" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Fleas</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 UAH</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">UAH</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Order</a>
+        </div>
+
+        <!-- Ticks -->
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/mite-1-копия.png" alt="Ticks" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Ticks</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 UAH</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">UAH</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Order</a>
+        </div>
+
+        <!-- Ants -->
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/ant-1-копия.png" alt="Ants" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Ants</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 UAH</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">UAH</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Order</a>
+        </div>
+
+        <!-- Moths -->
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/moth-копия.png" alt="Moths" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Moths</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 UAH</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">UAH</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Order</a>
+        </div>
+
+        <!-- Mold & Fungus -->
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/fungus-копия.png" alt="Mold & Fungus" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Mold & Fungus</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 UAH</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">UAH</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Order</a>
+        </div>
+
+        <!-- Rats and Mice -->
+        <div class="bg-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 text-center border border-gray-50">
+          <div class="w-28 h-28 mb-6 flex items-center justify-center">
+            <img src="/wp-content/uploads/2024/08/rat-silhouette-копия.png" alt="Rats & Mice" class="max-w-full max-h-full object-contain" />
+          </div>
+          <h3 class="text-2xl font-bold text-[#111827] mb-4 flex-grow" style="font-family: var(--font-heading)">Rats & Mice</h3>
+          <div class="flex flex-col items-center justify-center mb-8 w-full">
+            <span class="text-sm text-gray-400 line-through decoration-red-500 decoration-2 mb-1">1400 UAH</span>
+            <div class="text-[var(--color-accent-primary)] font-black flex items-baseline justify-center gap-1">
+              <span class="text-4xl">980</span>
+              <span class="text-xl">UAH</span>
+            </div>
+          </div>
+          <a href="#consultation-form" class="w-full py-4 px-6 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-[0_8px_20px_rgba(18,101,199,0.25)] hover:shadow-[0_10px_25px_rgba(18,101,199,0.35)] text-center text-sm">Order</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

@@ -1,46 +1,50 @@
-# Astro Starter Kit: Basics
+# Cucaracha — Pest Control Services
 
-```sh
-npm create astro@latest -- --template basics
+Professional pest control, disinsection, deratization, and disinfection services website. Built with Astro and Tailwind CSS.
+
+## 📋 Prerequisites
+
+- **Node.js**: `>=22.12.0` (required by Astro 6)
+- **npm**: `>=10.0.0`
+
+Check your Node.js version:
+```bash
+node -v
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 🚀 How to Run the Project
 
-Inside of your Astro project, you'll see the following folders and files:
+### 1. Install Dependencies
+```bash
+npm install
+```
 
+### 2. Start Local Development Server
+```bash
+npm run dev
+```
+Once started, open your browser and navigate to:
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+http://localhost:4321
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### 3. Build for Production
+To generate static production files into `./dist/`:
+```bash
+npm run build
+```
 
-## 🧞 Commands
+### 4. Preview Production Build Locally
+```bash
+npm run preview
+```
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🛠 Tech Stack
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Framework**: [Astro v6](https://astro.build/) (Static Output)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (`@tailwindcss/vite`)
+- **Backend / API**: PHP (`telegram.php` lead handling via Apache / `.htaccess`)

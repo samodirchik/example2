@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ConsultationForm from '../../components/sections/ConsultationForm.astro';
+import ParticleBackground from '../../components/ParticleBackground.astro';
+---
+
+<Layout title="Termite Extermination & Protection - Cucaracha" description="Professional termite eradication and structural timber treatments. Total colony elimination and long-term chemical barriers.">
+  <ParticleBackground />
+  <Header />
+  
+  <main class="pt-32 pb-16 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex text-sm text-[var(--color-text-muted)] mb-8 font-medium">
+        <ol class="flex items-center space-x-2">
+          <li>
+            <a href="/" class="hover:text-[var(--color-accent-primary)] transition-colors">Home</a>
+          </li>
+          <li><span class="mx-2">/</span></li>
+          <li>
+            <span class="hover:text-[var(--color-accent-primary)] transition-colors">Disinsection</span>
+          </li>
+          <li><span class="mx-2">/</span></li>
+          <li class="text-[var(--color-text-main)]">
+            Termites
+          </li>
+        </ol>
+      </nav>
+
+      <div class="glass-panel p-8 md:p-12 rounded-3xl shadow-xl">
+        <h1 class="text-4xl md:text-5xl font-black mb-8 text-[var(--color-text-main)] tracking-tight leading-tight">
+          Termite Extermination & Protection
+        </h1>
+        
+        <div class="prose prose-lg prose-headings:font-bold prose-headings:text-[var(--color-text-main)] prose-p:text-[var(--color-text-muted)] prose-img:rounded-2xl prose-img:shadow-lg max-w-none">
+          <p class="text-xl font-medium text-[var(--color-text-main)] mb-8">
+            Termites consume cellulose within wooden structures, foundation sills, and flooring, hollowing out load-bearing frames from the inside without external signs.
+          </p>
+
+          <h2 class="text-2xl mt-10 mb-4">Risks and Threats</h2>
+          <p class="mb-6">
+            A mature termite colony can compromise the structural safety of an entire building, causing devastating structural failures and exorbitant repair costs.
+          </p>
+
+          <div class="my-8">
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="670" src="/images/wp-content/uploads/2024/04/white_ants_termites_147-1024x670.jpg" alt="Termites" class="wp-image-417" style="aspect-ratio:16/9;object-fit:cover" title="Termites" srcset="/images/wp-content/uploads/2024/04/white_ants_termites_147-1024x670.jpg 1024w, /images/wp-content/uploads/2024/04/white_ants_termites_147-300x196.jpg 300w, /images/wp-content/uploads/2024/04/white_ants_termites_147-768x503.jpg 768w, /images/wp-content/uploads/2024/04/white_ants_termites_147-1536x1005.jpg 1536w, /images/wp-content/uploads/2024/04/white_ants_termites_147.jpg 1565w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+</div>
+
+          <h2 class="text-2xl mt-10 mb-4">Professional Extermination Process</h2>
+          <p class="mb-4">
+            Our certified specialists deploy industry-leading methodologies to eradicate infestations quickly, completely, and safely:
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li><span>Non-invasive inspection using thermal and acoustic detection to locate hidden subterranean termite galleries;</span></li>
+            <li><span>Perimeter soil trenching and chemical barrier installation preventing colony ingress;</span></li>
+            <li><span>Direct structural wood injection with termiticides transferring lethal doses across the colony;</span></li>
+            <li><span>Monitoring stations installed around property perimeters for early detection;</span></li>
+            <li><span>12-month comprehensive warranty and preventative maintenance plan.</span></li>
+          </ul>
+
+          <h2 class="text-2xl mt-10 mb-4">Why Choose Cucaracha?</h2>
+          <p class="mb-4">
+            With over 9 years of field experience and 11,000+ satisfied clients across Ukraine, Cucaracha guarantees unparalleled service standards:
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li><span><strong>12-Month Quality Warranty</strong> — complete peace of mind with free follow-up treatments if needed;</span></li>
+            <li><span><strong>Certified European Formulations</strong> — maximum pest lethality with zero risk to humans and domestic pets;</span></li>
+            <li><span><strong>Rapid 24/7 Response</strong> — expert technicians available around the clock across all major cities;</span></li>
+            <li><span><strong>Transparent Pricing</strong> — starting from 500 UAH with no hidden costs or unnecessary add-ons.</span></li>
+          </ul>
+
+          <div class="p-6 rounded-2xl bg-[rgba(var(--color-accent-primary-rgb,67,97,238),0.06)] border border-[rgba(var(--color-accent-primary-rgb,67,97,238),0.15)] my-8">
+            <h3 class="text-xl font-bold text-[var(--color-text-main)] mb-2">Need Urgent Assistance?</h3>
+            <p class="text-[var(--color-text-muted)] mb-4">
+              Contact our dispatch team right away or leave a callback request. Our specialist will assess your situation and arrive with full equipment.
+            </p>
+            <div class="flex flex-wrap gap-4 text-base font-bold text-[var(--color-accent-primary)]">
+              <a href="tel:+380956602238" class="hover:underline">+38 (095) 660 22 38</a>
+              <span class="text-gray-300">|</span>
+              <a href="tel:+380976080785" class="hover:underline">+38 (097) 608 07 85</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <ConsultationForm />
+  <Footer />
+</Layout>

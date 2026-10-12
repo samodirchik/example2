@@ -13,23 +13,24 @@ import Testimonials from '../components/sections/Testimonials.astro';
 import ShopSection from '../components/sections/ShopSection.astro';
 import Footer from '../components/Footer.astro';
 import ParticleBackground from '../components/ParticleBackground.astro';
-
-const lang = 'ua';
 ---
 
-<Layout title="Знищення тарганів, клопів та інших комах, та гризунів по всій Україні" lang={lang}>
+<Layout 
+  title="Cucaracha — Professional Pest, Rodent & Disinfection Services" 
+  description="Extermination of bed bugs, cockroaches, pests, and rodents across Ukraine. Certified European solutions, 12-month warranty, safe for kids and pets."
+>
   <ParticleBackground />
-  <Header lang={lang} />
+  <Header />
   <main>
-    <Hero lang={lang} />
-    <Advantages lang={lang} />
-    <Pricing lang={lang} />
-    <Certificates lang={lang} />
+    <Hero />
+    <Advantages />
+    <Pricing />
+    <Certificates />
 
-    <Testimonials lang={lang} />
-    <ShopSection lang={lang} />
-    <TargetAudience lang={lang} />
-    <FAQ lang={lang} />
+    <Testimonials />
+    <ShopSection />
+    <TargetAudience />
+    <FAQ />
   </main>
-  <Footer lang={lang} />
+  <Footer />
 </Layout>
