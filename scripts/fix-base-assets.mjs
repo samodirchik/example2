@@ -32,6 +32,10 @@ function processDir(dir) {
         content = content.replaceAll('url("/images/', 'url("/example2/images/');
         changed = true;
       }
+      if (content.includes("url('/images/")) {
+        content = content.replaceAll("url('/images/", "url('/example2/images/");
+        changed = true;
+      }
 
       if (content.includes('"/wp-content/')) {
         content = content.replaceAll('"/wp-content/', '"/example2/wp-content/');

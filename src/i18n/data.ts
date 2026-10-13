@@ -68,10 +68,10 @@ export const pricingData = {
     title: 'Pricing',
     btn: 'Order Now',
     items: [
-      { title: 'Dorm / Studio', oldPrice: '625 UAH', newPrice: 'FROM 500', currency: 'UAH' },
-      { title: '1-Bedroom', oldPrice: '1125 UAH', newPrice: 'FROM 900', currency: 'UAH' },
-      { title: '2-Bedroom', oldPrice: '1250 UAH', newPrice: 'FROM 1000', currency: 'UAH' },
-      { title: '3-Bedroom', oldPrice: '1375 UAH', newPrice: 'FROM 1100', currency: 'UAH' }
+      { title: 'Dorm / Studio', oldPrice: '$35', newPrice: 'FROM $25', currency: '' },
+      { title: '1-Bedroom', oldPrice: '$60', newPrice: 'FROM $45', currency: '' },
+      { title: '2-Bedroom', oldPrice: '$65', newPrice: 'FROM $50', currency: '' },
+      { title: '3-Bedroom', oldPrice: '$75', newPrice: 'FROM $55', currency: '' }
     ]
   }
 };

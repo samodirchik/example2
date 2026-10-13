@@ -51,7 +51,7 @@ const data = pricingData.en;
             <h3 class="text-2xl font-bold mb-8 text-[var(--color-text-main)]" style="font-family: var(--font-heading)">{item.title}</h3>
             <div class="flex flex-col items-center gap-2 mb-8">
               <span class="text-xl text-[var(--color-text-muted)] font-medium strike-anim">{item.oldPrice}</span>
-              <span class="text-4xl font-black text-[var(--color-accent-primary)] drop-shadow-md">{item.newPrice} <span class="text-xl">{item.currency}</span></span>
+              <span class="text-4xl font-black text-[var(--color-accent-primary)] drop-shadow-md">{item.newPrice}{item.currency ? ` ${item.currency}` : ''}</span>
             </div>
             <Button text={data.btn} href="#consultation-form" variant="primary" class="w-full py-4 text-sm shadow-md" />
           </div>
