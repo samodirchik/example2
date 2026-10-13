@@ -47,7 +47,7 @@ const t = useTranslations(lang);
           <div class="inline-block bg-[#d32f2f] text-white px-4 py-1.5 rounded-lg text-lg font-bold tracking-widest shadow-md">Mr.Cucaracha</div>
         </div>
 
-        <form action="/telegram.php" method="post" class="space-y-6">
+        <form action="#" method="post" class="space-y-6">
           <input type="hidden" name="type" value="zamer2" />
           <input type="hidden" name="current_url" value={routes.home} />
           
@@ -56,7 +56,7 @@ const t = useTranslations(lang);
           </div>
 
           <div class="relative">
-            <input type="text" name="tel" placeholder={t('form.input')} maxlength="13" required class="w-full px-6 py-5 rounded-2xl bg-white border-2 border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.3)] focus:outline-none focus:ring-4 focus:ring-blue-300 focus:border-blue-500 transition-all text-[var(--color-text-main)] placeholder-[var(--color-text-muted)] font-bold text-xl text-center" />
+            <input type="tel" name="tel" placeholder={t('form.input')} maxlength="20" required class="w-full px-6 py-5 rounded-2xl bg-white border-2 border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.3)] focus:outline-none focus:ring-4 focus:ring-blue-300 focus:border-blue-500 transition-all text-[var(--color-text-main)] placeholder-[var(--color-text-muted)] font-bold text-xl text-center" />
           </div>
 
           <button type="submit" class="w-full py-5 rounded-2xl bg-[var(--color-accent-primary)] text-white font-bold text-lg uppercase tracking-wider hover:bg-[var(--color-accent-hover)] transition-all shadow-lg hover:shadow-xl">
@@ -90,35 +90,7 @@ const t = useTranslations(lang);
 
 <script is:inline>
   document.addEventListener('astro:page-load', () => {
-    // Valid Ukrainian operator codes
-    const validOperators = ['39','50','63','66','67','68','73','91','92','93','94','95','96','97','98','99'];
-    
-    // 1. Phone Input Formatting
-    const phoneInputs = document.querySelectorAll('input[name="tel"]');
-    phoneInputs.forEach(input => {
-      input.addEventListener('focus', () => {
-        if (!input.value.startsWith('+380')) {
-          input.value = '+380';
-        }
-      });
-      
-      input.addEventListener('input', () => {
-        let val = input.value.replace(/[^\d+]/g, '');
-        if (!val.startsWith('+380')) {
-          val = '+380' + val.replace(/^\+?3?8?0?/, '');
-        }
-        input.value = val.substring(0, 13); // +380 + 9 digits = 13 characters
-      });
-      
-      input.addEventListener('keydown', (e) => {
-        // Prevent deleting the +380 prefix
-        if (input.selectionStart <= 4 && (e.key === 'Backspace' || e.key === 'Delete')) {
-          e.preventDefault();
-        }
-      });
-    });
-
-    const forms = document.querySelectorAll('form[action="/telegram.php"]');
+    const forms = document.querySelectorAll('form');
     const modal = document.getElementById('success-modal');
     const modalContent = document.getElementById('success-modal-content');
     const modalTitle = document.getElementById('modal-title');
@@ -131,97 +103,36 @@ const t = useTranslations(lang);
     }
     
     forms.forEach(form => {
-      form.onsubmit = async (e) => {
+      form.onsubmit = (e) => {
         e.preventDefault();
         
-        const phoneInput = form.querySelector('input[name="tel"]');
-        const phoneVal = phoneInput.value;
-        
-        // --- Validation ---
-        if (phoneVal.length !== 13) {
-          alert('Please enter a complete phone number (+380XXXXXXXXX)');
-          return;
-        }
-        
-        const operatorCode = phoneVal.substring(4, 6);
-        if (!validOperators.includes(operatorCode)) {
-          alert('Invalid Ukrainian mobile operator code entered.');
-          return;
+        // Push successful submission event to Google Tag Manager
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'event': 'form_submission_success'
+        });
+
+        // Setup and show modal
+        if (modal && modalContent && modalTitle && modalDesc && modalBtn) {
+          modalTitle.textContent = 'Success!';
+          modalDesc.textContent = 'Your request has been submitted successfully! Our manager will contact you shortly.';
+          modalBtn.textContent = 'Great';
+          
+          modal.classList.remove('opacity-0', 'pointer-events-none');
+          modalContent.classList.remove('scale-90', 'translate-y-8');
+          modalContent.classList.add('scale-100', 'translate-y-0');
+          
+          const closeModal = () => {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100', 'translate-y-0');
+            modalContent.classList.add('scale-90', 'translate-y-8');
+          };
+          
+          modalBtn.onclick = closeModal;
         }
 
-        // --- Anti-spam (Cooldown) ---
-        const lastSubmit = localStorage.getItem('cucaracha_last_submit');
-        const now = Date.now();
-        // 60 seconds cooldown
-        if (lastSubmit && (now - parseInt(lastSubmit)) < 60000) {
-          alert('You recently submitted a request. Please wait a minute before submitting again.');
-          return;
-        }
-        
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        
-        // Disable button to prevent double submission
-        submitBtn.style.pointerEvents = 'none';
-        submitBtn.style.opacity = '0.7';
-        submitBtn.innerHTML = 'Submitting...';
-        
-        try {
-          const formData = new FormData(form);
-          const response = await fetch('/telegram.php', {
-            method: 'POST',
-            body: formData
-          });
-          
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          
-          const result = await response.json();
-          if (result.status === 'error') {
-            throw new Error(result.message);
-          }
-          
-          // Save submission time for anti-spam
-          localStorage.setItem('cucaracha_last_submit', now.toString());
-          
-          // Push successful submission event to Google Tag Manager
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            'event': 'form_submission_success',
-            'form_action': '/telegram.php'
-          });
-
-          // Setup and show modal
-          if (modal && modalContent && modalTitle && modalDesc && modalBtn) {
-            modalTitle.textContent = 'Success!';
-            modalDesc.textContent = 'Your request has been submitted successfully! Our manager will contact you shortly.';
-            modalBtn.textContent = 'Great';
-            
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-90', 'translate-y-8');
-            modalContent.classList.add('scale-100', 'translate-y-0');
-            
-            const closeAndRedirect = () => {
-              window.location.href = '/';
-            };
-            
-            modalBtn.onclick = closeAndRedirect;
-          } else {
-            // Fallback
-            alert('Request submitted successfully!');
-            window.location.href = '/';
-          }
-          
-        } catch (error) {
-          console.error('Error submitting form:', error);
-          alert('An error occurred while submitting your request. Please call us directly.');
-          
-          // Restore button
-          submitBtn.style.pointerEvents = 'auto';
-          submitBtn.style.opacity = '1';
-          submitBtn.innerHTML = originalText;
-        }
+        alert('Your request has been submitted successfully!');
+        form.reset();
       };
     });
   });

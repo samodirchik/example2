@@ -47,4 +47,3 @@ npm run preview
 
 - **Framework**: [Astro v6](https://astro.build/) (Static Output)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (`@tailwindcss/vite`)
-- **Backend / API**: PHP (`telegram.php` lead handling via Apache / `.htaccess`)
