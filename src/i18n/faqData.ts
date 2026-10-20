@@ -12,7 +12,7 @@ export const faqData = {
       },
       {
         q: "What methods and formulations do you use?",
-        a: "The choice of methods and formulations depends on the insect species and infestation level:<br><ul><li>Targeted Insecticides: Advanced microencapsulated formulations (pyrethroids, neonicotinoids) with long residual efficacy.</li><li>Cold Fog (ULV): Ultra-low volume fine misting reaching micro-cracks, baseboards, and hidden nesting sites.</li><li>Baiting Gels and Powders: Specialized attractant formulas designed to eradicate entire colony populations.</li><li>Barrier Protection: Protective perimeter barriers applied around ventilation ducts and entry points to stop insect migration.</li></ul>"
+        a: "The choice of methods and formulations depends on the insect species and infestation level:<br><ul><li>Targeted Insecticides: Advanced microencapsulated formulations (pyrethroids, neonicotinoids) with long residual efficacy.</li><li>Cold Fog (ULV): Ultra-low volume fine misting reaching micro-cracks, baseboards, and hidden nesting sites.</li><li>Baiting Gels and Powders: Specialized attractant formulas designed to eradicate entire colony populations.</li><li>Perimeter Defense: Protective barriers applied around entry points and foundation perimeters to stop insect migration.</li></ul>"
       },
       {
         q: "What are the main stages of a professional extermination visit?",
@@ -36,7 +36,7 @@ export const faqData = {
       },
       {
         q: "How can I prevent pests from returning from neighboring units?",
-        a: "To prevent re-infestation after professional treatment:<br><ul><li>Barrier Protection: We apply specialized barrier formulations to all ventilation shafts, pipe entries, and door frames.</li><li>Seal Cracks: Seal potential gaps around pipes, electrical sockets, and walls.</li><li>General Sanitation: Maintain dry, clean kitchen surfaces and keep food stored in sealed containers.</li><li>Prompt Action: Contact us immediately if you spot occasional migrating pests—your 12-month guarantee covers you!</li></ul>"
+        a: "To prevent re-infestation after professional treatment:<br><ul><li>Perimeter Defense: We apply specialized residual barrier formulations to exterior perimeters, entry points, and entry frames.</li><li>Seal Cracks: Seal potential gaps around pipes, electrical sockets, and walls.</li><li>General Sanitation: Maintain dry, clean kitchen surfaces and keep food stored in sealed containers.</li><li>Prompt Action: Contact us immediately if you spot occasional migrating pests—your 12-month guarantee covers you!</li></ul>"
       }
     ]
   }

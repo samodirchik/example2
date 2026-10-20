@@ -145,25 +145,27 @@
       cancelAnimationFrame(animationFrameId);
     }
 
-    let cssWidth = Math.max(container.offsetWidth, window.innerWidth, document.documentElement.clientWidth);
-    let cssHeight = Math.max(container.offsetHeight, document.documentElement.scrollHeight, document.body.scrollHeight, window.innerHeight);
+    let cssWidth = Math.max(container.offsetWidth, window.innerWidth);
+    let cssHeight = Math.max(container.offsetHeight, window.innerHeight);
     container.style.height = cssHeight + 'px';
 
     let bugs: CyberRoachDOM[] = [];
 
+    const isMobile = window.innerWidth <= 768;
     const mouse = {
       x: -1000,
       y: -1000,
-      radius: window.innerWidth <= 768 ? 80 : 130
+      radius: isMobile ? 80 : 130
     };
 
     function resize() {
-      cssWidth = Math.max(container.offsetWidth, window.innerWidth, document.documentElement.clientWidth);
-      cssHeight = Math.max(container.offsetHeight, document.documentElement.scrollHeight, document.body.scrollHeight, window.innerHeight);
+      if (!container) return;
+      cssWidth = Math.max(container.offsetWidth, window.innerWidth);
+      cssHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight, window.innerHeight);
       container.style.height = cssHeight + 'px';
     }
 
-    const numberOfBugs = Math.min(50, Math.max(25, Math.floor(cssHeight / 150))); 
+    const numberOfBugs = isMobile ? 12 : Math.min(30, Math.max(16, Math.floor(cssHeight / 250))); 
     for (let i = 0; i < numberOfBugs; i++) {
       let x = Math.random() * cssWidth;
       let y = Math.random() * cssHeight;
@@ -172,23 +174,14 @@
 
     let lastTime = 0;
     let isVisible = true;
-    let frameCount = 0;
 
     function animate(time: number) {
       if (!isVisible) return;
       
       animationFrameId = requestAnimationFrame(animate);
       if (!lastTime) lastTime = time;
-      const dt = Math.min((time - lastTime) / 16.666, 3.0);
+      const dt = Math.min((time - lastTime) / 16.666, 2.5);
       lastTime = time;
-
-      frameCount++;
-      if (frameCount % 60 === 0) {
-        const docH = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
-        if (Math.abs(docH - cssHeight) > 100) {
-          resize();
-        }
-      }
 
       for (let i = 0; i < bugs.length; i++) {
         bugs[i].update(mouse, cssWidth, cssHeight, dt);
@@ -212,36 +205,32 @@
     window.addEventListener('resize', () => {
       mouse.radius = window.innerWidth <= 768 ? 80 : 130;
       resize();
-    });
+    }, { passive: true });
 
     window.addEventListener('mousemove', (event) => {
-      if (!isVisible) return;
+      if (!isVisible || !container) return;
       const rect = container.getBoundingClientRect();
       mouse.x = event.clientX - rect.left;
       mouse.y = event.clientY - rect.top;
-    });
+    }, { passive: true });
 
     window.addEventListener('mouseleave', () => {
       mouse.x = -1000;
       mouse.y = -1000;
-    });
+    }, { passive: true });
 
     window.addEventListener('touchstart', (event) => {
-      if (!isVisible) return;
-      if (event.touches.length > 0) {
-        const rect = container.getBoundingClientRect();
-        mouse.x = event.touches[0].clientX - rect.left;
-        mouse.y = event.touches[0].clientY - rect.top;
-      }
+      if (!isVisible || !container || event.touches.length === 0) return;
+      const rect = container.getBoundingClientRect();
+      mouse.x = event.touches[0].clientX - rect.left;
+      mouse.y = event.touches[0].clientY - rect.top;
     }, { passive: true });
     
     window.addEventListener('touchmove', (event) => {
-      if (!isVisible) return;
-      if (event.touches.length > 0) {
-        const rect = container.getBoundingClientRect();
-        mouse.x = event.touches[0].clientX - rect.left;
-        mouse.y = event.touches[0].clientY - rect.top;
-      }
+      if (!isVisible || !container || event.touches.length === 0) return;
+      const rect = container.getBoundingClientRect();
+      mouse.x = event.touches[0].clientX - rect.left;
+      mouse.y = event.touches[0].clientY - rect.top;
     }, { passive: true });
 
     resize();
@@ -249,12 +238,23 @@
     animationFrameId = requestAnimationFrame(animate);
   }
 
-  // Ensure initialization across all load events
+  // Safe single initialization
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSwarm);
+    document.addEventListener('DOMContentLoaded', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(initSwarm);
+      } else {
+        setTimeout(initSwarm, 100);
+      }
+    }, { once: true });
   } else {
-    initSwarm();
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initSwarm);
+    } else {
+      setTimeout(initSwarm, 100);
+    }
   }
-  window.addEventListener('load', initSwarm);
-  document.addEventListener('astro:page-load', initSwarm);
+  document.addEventListener('astro:page-load', () => {
+    initSwarm();
+  });
 </script>

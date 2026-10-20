@@ -17,7 +17,7 @@ export const targetAudienceData = {
   en: [
     {
       icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>',
-      title: 'Apartments & Private Houses',
+      title: 'Single-Family Homes & Condos',
       desc: 'We use certified hypoallergenic products that are completely safe for children and domestic pets.'
     },
     {
@@ -37,7 +37,7 @@ export const targetAudienceData = {
     },
     {
       icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>',
-      title: 'Multi-Family Residential Buildings',
+      title: 'HOAs & Property Management',
       desc: 'Full-building complex treatments in close partnership with homeowners associations and management companies.'
     },
     {
@@ -57,8 +57,8 @@ export const targetAudienceData = {
     },
     {
       icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>',
-      title: 'Outdoor & Agricultural Areas',
-      desc: 'Premium acaricidal spraying for private land plots and agricultural operations.'
+      title: 'Yards, Lawns & Patios',
+      desc: 'Targeted perimeter, lawn, and patio spraying for residential properties and outdoor living spaces.'
     }
   ]
 };
@@ -66,7 +66,7 @@ export const targetAudienceData = {
 export const pricingData = {
   en: {
     title: 'Pricing',
-    btn: 'Order Now',
+    btn: 'Book Service',
     items: [
       { title: 'Studio Apartment', oldPrice: '$189', newPrice: 'FROM $149', currency: '' },
       { title: '1-Bedroom', oldPrice: '$229', newPrice: 'FROM $189', currency: '' },

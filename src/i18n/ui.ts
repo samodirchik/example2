@@ -15,7 +15,7 @@ export const ui = {
     'nav.disinfection': 'Disinfection',
     'nav.shop': 'Chemical Products',
     'nav.contacts': 'Contacts',
-    'nav.call': 'Request a Call',
+    'nav.call': 'Get a Free Quote',
     'header.subtitle': 'Serving Greater Austin & Surrounding Areas',
     'header.247': 'Same-Day Emergency Service',
     
@@ -53,9 +53,9 @@ export const ui = {
     'hero.f1': '12-Month Guarantee',
     'hero.f2': 'Treatments starting at $149 for up to 1,000 sq. ft.',
     'hero.f3': '9+ Years of proven expertise',
-    'hero.f4': 'Treatment in 30 minutes without stains or odor',
+    'hero.f4': '30-Minute Odorless & Stainless Application',
     'hero.f5': 'EPA-Registered & Eco-Friendly products',
-    'hero.f6': 'Complimentary Barrier Protection',
+    'hero.f6': 'Free Perimeter Defense Treatment',
     'hero.discount.badge': 'Special Offer',
     'hero.discount.title': '20% DISCOUNT',
     'hero.discount.text': 'Claim your first treatment discount. Special offer valid until',
@@ -72,14 +72,14 @@ export const ui = {
     'footer.studio': 'sdccode.studio',
 
     // ConsultationForm
-    'form.title1': 'Free Consultation',
-    'form.title2': 'Right Now!',
-    'form.desc': 'Leave your request and our specialist will contact you within 5 minutes for a free consultation and price quote.',
-    'form.or_call': 'Or call us directly:',
-    'form.box.title1': 'FREE EXPERT CONSULTATION',
+    'form.title1': 'Free Inspection & Estimate',
+    'form.title2': 'Schedule Service Today!',
+    'form.desc': 'Submit your details for an instant quote and our certified technician will contact you within 5 minutes.',
+    'form.or_call': 'Or call our 24/7 dispatch directly:',
+    'form.box.title1': 'FREE INSPECTION & ESTIMATE',
     'form.box.title2': 'NOT SURE HOW TO GET RID OF PESTS? WE CAN HELP!',
     'form.input': 'Your phone number',
-    'form.submit': 'SUBMIT REQUEST',
+    'form.submit': 'GET A FREE QUOTE',
   }
 } as const;
 
