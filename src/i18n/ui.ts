@@ -16,8 +16,8 @@ export const ui = {
     'nav.shop': 'Chemical Products',
     'nav.contacts': 'Contacts',
     'nav.call': 'Request a Call',
-    'header.subtitle': 'Trusted pest control solutions',
-    'header.247': '24/7 Support',
+    'header.subtitle': 'Serving Greater Austin & Surrounding Areas',
+    'header.247': 'Same-Day Emergency Service',
     
     // Services Dropdowns
     'srv.bugs': 'Bed Bugs',
@@ -47,14 +47,14 @@ export const ui = {
     'srv.attics': 'Attics & Basements',
 
     // Hero
-    'hero.badge': 'Pest Control Leaders',
+    'hero.badge': 'Licensed, Bonded & Insured • EPA-Certified Technicians',
     'hero.title1': 'Professional',
     'hero.title2': 'Pest Control',
     'hero.f1': '12-Month Guarantee',
-    'hero.f2': 'Price starting at $25 up to 25m²',
+    'hero.f2': 'Treatments starting at $149 for up to 1,000 sq. ft.',
     'hero.f3': '9+ Years of proven expertise',
     'hero.f4': 'Treatment in 30 minutes without stains or odor',
-    'hero.f5': 'Certified European licensed products only',
+    'hero.f5': 'EPA-Registered & Eco-Friendly products',
     'hero.f6': 'Complimentary Barrier Protection',
     'hero.discount.badge': 'Special Offer',
     'hero.discount.title': '20% DISCOUNT',
@@ -66,7 +66,7 @@ export const ui = {
     'hero.btn.discount': 'Get Discount',
 
     // Footer
-    'footer.desc': 'Cucaracha - professional pest control and extermination services',
+    'footer.desc': 'Cucaracha - professional pest control and rodent extermination services. Serving Greater Austin & Surrounding Areas. Licensed, Bonded & Insured.',
     'footer.rights': 'All rights reserved.',
     'footer.dev': 'Created by ',
     'footer.studio': 'sdccode.studio',

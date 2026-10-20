@@ -31,7 +31,7 @@ const t = useTranslations(lang);
           <div>
             <div class="text-sm text-[var(--color-text-muted)] mb-1">{t('form.or_call')}</div>
             <div class="flex flex-col gap-1">
-              <a href="tel:+12300000000" class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] transition-colors">+1 (230) 000-0000</a>
+              <a href="tel:+18005550199" class="text-xl font-bold text-[var(--color-text-main)] hover:text-[var(--color-accent-primary)] transition-colors">+1 (800) 555-0199</a>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@ const t = useTranslations(lang);
         </div>
 
         <form action="#" method="post" class="space-y-6">
-          <input type="hidden" name="type" value="zamer2" />
+          <input type="hidden" name="type" value="consultation_lead" />
           <input type="hidden" name="current_url" value={routes.home} />
           
           <div class="relative">
@@ -79,7 +79,7 @@ const t = useTranslations(lang);
     </div>
     
     <h3 id="modal-title" class="text-3xl font-black text-[var(--color-text-main)] mb-4" style="font-family: var(--font-heading)">Success!</h3>
-    <p id="modal-desc" class="text-[var(--color-text-muted)] text-lg mb-8 leading-relaxed">Your request has been submitted successfully! Our manager will contact you shortly.</p>
+    <p id="modal-desc" class="text-[var(--color-text-muted)] text-lg mb-8 leading-relaxed">Your request has been submitted successfully! Our licensed technician will contact you shortly.</p>
     
     <button id="modal-close-btn" class="w-full relative px-8 py-4 bg-gradient-to-r from-[var(--color-accent-primary)] to-[var(--color-accent-dark)] text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-95 transition-all duration-300">
       Great
@@ -114,7 +114,7 @@ const t = useTranslations(lang);
         // Setup and show modal
         if (modal && modalContent && modalTitle && modalDesc && modalBtn) {
           modalTitle.textContent = 'Success!';
-          modalDesc.textContent = 'Your request has been submitted successfully! Our manager will contact you shortly.';
+          modalDesc.textContent = 'Your request has been submitted successfully! Our licensed technician will contact you shortly.';
           modalBtn.textContent = 'Great';
           
           modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -130,7 +130,7 @@ const t = useTranslations(lang);
           modalBtn.onclick = closeModal;
         }
 
-        alert('Your request has been submitted successfully!');
+        // Form submitted
         form.reset();
       };
     });

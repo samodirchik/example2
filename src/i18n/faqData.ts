@@ -4,7 +4,7 @@ export const faqData = {
     items: [
       {
         q: "Is the treatment safe for my children and pets?",
-        a: "Cucaracha takes extensive measures to ensure maximum health and safety for children and pets. However, clients should observe basic precautions:<br><ul><li>Temporary vacancy: Premises should be vacated during active treatment, especially when aerosol misting is applied. Children and pets must stay elsewhere.</li><li>Ventilation: Thoroughly air out the premises upon return to eliminate any lingering airborne mist.</li><li>Follow instructions: Adhere strictly to the safety guidance provided by our certified technicians before re-entering.</li><li>Inform our team: Let us know in advance about children, pets, or individuals with respiratory conditions so we can tailor our safety protocol.</li></ul><br>Our practice is founded on certified, low-toxicity, targeted European products. Your health and safety are always our top priority!"
+        a: "Cucaracha takes extensive measures to ensure maximum health and safety for children and pets. However, clients should observe basic precautions:<br><ul><li>Temporary vacancy: Premises should be vacated during active treatment, especially when aerosol misting is applied. Children and pets must stay elsewhere.</li><li>Ventilation: Thoroughly air out the premises upon return to eliminate any lingering airborne mist.</li><li>Follow instructions: Adhere strictly to the safety guidance provided by our certified technicians before re-entering.</li><li>Inform our team: Let us know in advance about children, pets, or individuals with respiratory conditions so we can tailor our safety protocol.</li></ul><br>Our practice is founded on 100% EPA-registered, low-toxicity child & pet safe formulations. Your health and safety are always our top priority!"
       },
       {
         q: "We have a severe pest infestation. Can you handle it?",
@@ -24,7 +24,7 @@ export const faqData = {
       },
       {
         q: "How long does the treatment take?",
-        a: "A typical treatment for a standard apartment (around 50 m²) takes between 20 to 40 minutes. The exact duration depends on the property size, layout complexity, and degree of infestation."
+        a: "A typical treatment for a standard apartment or home (around 1,200 sq. ft.) takes between 20 to 40 minutes. The exact duration depends on the property size, layout complexity, and degree of infestation."
       },
       {
         q: "How long should we stay away from the premises afterwards?",

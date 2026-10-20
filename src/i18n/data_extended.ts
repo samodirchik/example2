@@ -14,8 +14,8 @@ export const advantagesData = {
       },
       {
         icon: '<path d="M9 22h6M12 17v5M5 12l2.39-2.39a2 2 0 0 0 .61-1.41V4h8v4.2a2 2 0 0 0 .61 1.41L19 12a2 2 0 0 1-.5 2.87 2 2 0 0 1-2.26 0 2 2 0 0 0-2.48 0 2 2 0 0 1-2.26 0 2 2 0 0 0-2.48 0 2 2 0 0 1-.5-2.87z" />',
-        title: 'Certified European Pest Control Products',
-        desc: 'We exclusively use approved pest control products from leading European manufacturers in France and Germany, certified by the relevant health authorities'
+        title: 'EPA-Registered Pest Control Formulations',
+        desc: 'We exclusively use 100% EPA-registered, low-toxicity child & pet safe formulations certified by regulatory authorities'
       },
       {
         icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" />',

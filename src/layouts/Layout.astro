@@ -10,7 +10,7 @@ interface Props {
 
 const { 
   title, 
-  description = 'Professional pest control, disinsection, deratization, and disinfection services. 100% guarantee, certified European solutions.',
+  description = 'Professional pest control, rodent control, and sanitization services. 100% guarantee, EPA-registered child & pet safe solutions. Serving Greater Austin.',
   lang = 'en'
 } = Astro.props;
 
@@ -63,6 +63,38 @@ const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site).href :
       <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap">
     </noscript>
 
+    <!-- LocalBusiness / PestControlService JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PestControlService",
+      "name": "Cucaracha Pest Control",
+      "image": "https://samodirchik.github.io/example2/favicon.png",
+      "telephone": "+1-800-555-0199",
+      "url": "https://samodirchik.github.io/example2/",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "100 Congress Ave",
+        "addressLocality": "Austin",
+        "addressRegion": "TX",
+        "postalCode": "78701",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 30.2649,
+        "longitude": -97.7447
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "areaServed": ["Austin", "Round Rock", "Cedar Park", "Pflugerville", "Georgetown", "San Marcos"]
+    }
+    </script>
   </head>
   <body class="bg-[var(--color-bg-base)] text-[var(--color-text-main)] min-h-screen relative overflow-x-hidden selection:bg-[var(--color-accent-primary)] selection:text-white">
     <!-- Google Tag Manager (noscript) -->

@@ -68,10 +68,10 @@ export const pricingData = {
     title: 'Pricing',
     btn: 'Order Now',
     items: [
-      { title: 'Dorm / Studio', oldPrice: '$35', newPrice: 'FROM $25', currency: '' },
-      { title: '1-Bedroom', oldPrice: '$60', newPrice: 'FROM $45', currency: '' },
-      { title: '2-Bedroom', oldPrice: '$65', newPrice: 'FROM $50', currency: '' },
-      { title: '3-Bedroom', oldPrice: '$75', newPrice: 'FROM $55', currency: '' }
+      { title: 'Studio Apartment', oldPrice: '$189', newPrice: 'FROM $149', currency: '' },
+      { title: '1-Bedroom', oldPrice: '$229', newPrice: 'FROM $189', currency: '' },
+      { title: '2-Bedroom', oldPrice: '$269', newPrice: 'FROM $229', currency: '' },
+      { title: '3-Bedroom', oldPrice: '$329', newPrice: 'FROM $279', currency: '' }
     ]
   }
 };
